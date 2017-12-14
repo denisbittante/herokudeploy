@@ -1,19 +1,48 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
-  <ul class="nav nav-pills nav-stacked">
-    <li role="presentation" class="navbar-header">Aktivitäte</li>
-    <li role="presentation"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</li>
-    <li role="presentation"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</li>
-    <li role="presentation"><span class="glyphicon glyphicon-wrench"></span> Erstellt von mir</li>
-    <li role="presentation"><span class="glyphicon glyphicon-warning-sign"></span> Konflikte <span
-      class="badge">5</span></li>
-    <li role="presentation"><span class="glyphicon glyphicon-save"></span> Exportieren</li>
-    <hr>
-    <li role="presentation"><span class="glyphicon glyphicon-record"></span> VSE - St. Gallen English</li>
-    <li role="presentation"><span class="glyphicon glyphicon-record"></span> VSD - St. Gallen Ost</li>
-    <hr>
-    <li role="presentation"><span class="glyphicon glyphicon-tag"></span> Anlagendienst</li>
-    <li role="presentation"><span class="glyphicon glyphicon-tag"></span> Anlagendienst</li>
-    <li role="presentation"><span class="glyphicon glyphicon-tag"></span> Anlagendienst</li>
-    <hr>
-  </ul>
+  <div class="container-fluid">
+    <ul class="nav nav-stacked">
+      <button type="button" class="btn btn-success navbar-btn "><span class="glyphicon glyphicon-plus-sign"></span>
+        Aktivität erstellen
+      </button>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-time"></span> Aktivitäten</a></li>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a></li>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a></li>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-wrench"></span> Von mir erstellt </a></li>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> Konflikte <span
+        class="badge">5</span></a></li>
+      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-save"></span> Exportieren</a></li>
+      <hr>
+
+
+      <div class="checkbox navbar-btn">
+        <label class="navbar-link" for="filterUnfulfilled">
+          <input type="checkbox" class="autosubmit" id="filterUnfulfilled" value="true">
+          <span class="glyphicon glyphicon-record"></span> VSE - St. Gallen English
+        </label>
+      </div>
+
+      <div class="checkbox navbar-btn">
+        <label class="navbar-link" for="filterUnfulfilled">
+          <input type="checkbox" class="autosubmit" id="filterUnfulfilled" value="true">
+          <span class="glyphicon glyphicon-record"></span> VSD - St. Gallen Ost
+        </label>
+      </div>
+      <hr>
+
+
+      <div class="checkbox navbar-btn">
+        <label class="navbar-link" for="filterUnfulfilled">
+          <input type="checkbox" class="autosubmit" id="filterUnfulfilled" value="true">
+          <span class="glyphicon glyphicon-tag"></span> Anlagendienst
+        </label>
+      </div>
+
+      <div class="checkbox navbar-btn">
+        <label class="navbar-link" for="filterUnfulfilled">
+          <input type="checkbox" class="autosubmit" id="filterUnfulfilled" value="true">
+          <span class="glyphicon glyphicon-tag"></span> Something else
+        </label>
+      </div>
+    </ul>
+  </div>
 </nav>
