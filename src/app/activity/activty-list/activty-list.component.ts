@@ -16,8 +16,7 @@ export class ActivtyListComponent implements OnInit {
   }
 
   ngOnInit() {
-    activty:Activity = new Activity();
-    this.activitylist.push(activity);
+    this.activitylist.push(new Activity());
 
   }
 
