@@ -1,6 +1,6 @@
 import {Person} from "../person/person-model";
 import {ActivityType} from "./activity-type-model";
-import {Conflict} from "./activty-conflict-list/activity-conflict-model";
+import {Conflict} from "./activity-conflict-list/activity-conflict-model";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
