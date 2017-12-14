@@ -1,3 +1,4 @@
+import {Person} from "../person/person-model";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
