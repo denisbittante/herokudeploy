@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-lg-3">
-      <app-activty-nav></app-activty-nav>
+      <app-activty-nav (crActivity)="onActivityCreated($event)"></app-activty-nav>
     </div>
     <div class="col-lg-9">
       <app-activty-list></app-activty-list>

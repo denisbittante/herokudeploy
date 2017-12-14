@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-activty-nav',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivtyNavComponent implements OnInit {
 
-  constructor() { }
+  @Output() crActivity:EventEmitter<{name:string}> = new EventEmitter <{name: string}>();
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onCreateActivity() {
+    this.crActivity.emit({name:'Hallo'});
   }
 
 }

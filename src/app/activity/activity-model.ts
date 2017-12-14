@@ -1,6 +1,6 @@
 import {Person} from "../person/person-model";
 import {ActivityType} from "./activity-type-model";
-import {Conflicts} from "./activty-conflict-list/activity-conflict-model";
+import {Conflict} from "./activty-conflict-list/activity-conflict-model";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
@@ -24,10 +24,19 @@ export class Activity {
   public parent_id: number;
   public child_activities: Activity[];
   public label: string[];
-  public conflicts: Conflicts[];
+  public conflicts: Conflict[];
+  public mut_date: Date;
+  public create_date: Date;
+  public author: Person;
 
-  constructor() {
-
+  constructor(title: string, desc: string, fromDay: Date, toDay: Date, person_in_charge: Person, label: string[], conflicts: Conflict[]) {
+    this.title = title;
+    this.desc = desc;
+    this.fromDay = fromDay;
+    this.toDay = toDay;
+    this.person_in_charge = person_in_charge;
+    this.label = label;
+    this.conflicts = conflicts;
   }
 
   public addLabel(label: string) {

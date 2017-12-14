@@ -5,35 +5,52 @@
 
 
       <div class="col-md-1 pull-right">
-        <span class="glyphicon glyphicon-menu-down"></span>
-        <span class="glyphicon glyphicon-option-vertical"></span>
+
+        <div class="btn-group" appDropdown>
+          <a
+            class=" btn dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            <span class="glyphicon glyphicon-option-vertical"></span>
+          </a>
+          <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-pencil"></span> Bearbeiten</a></li>
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-trash"></span> Löschen</a></li>
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-duplicate"></span> Dupplizieren</a></li>
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-text-size"></span> Subaktivität erstellen</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-eye-open"></span> Freigeben</a></li>
+            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-download-alt"></span> Exportieren</a></li>
+          </ul>
+        </div>
       </div>
 
       <div class="col-md-2">
-        <span class="glyphicon glyphicon-time"></span> 12.04.2018 19:00 - 12.04.2018 20:00
+        <span class="glyphicon glyphicon-time"></span> {{item.fromDay | date: "dd.MM.yy"}} 19:00 - {{item.toDay| date:
+        "dd.MM.yy"}} 20:00
       </div>
       <div class="col-md-4">
-        <h4 class="text-capitalize text-primary"> Namum 1 bis Habakuk</h4>
+        <h4 class="text-capitalize text-primary"> {{item.title}}</h4>
       </div>
 
 
       <div class="col-md-3 text-right">
-        <span class="label label-primary">Anlagendienst</span>
-        <span class="label label-primary">Something else</span>
-        <span class="label label-primary">Something else</span>
-        <span class="label label-primary">Something else</span>
+        <span class="label label-primary" *ngFor="let label of item.label">{{label}}</span>
+
       </div>
       <div class="col-md-2 text-right">
-        <b><span class="glyphicon glyphicon-user"></span> Max Muster </b>
+        <b><span class="glyphicon glyphicon-user"></span> {{item.person_in_charge.callname}}
+          {{item.person_in_charge.name}} </b>
       </div>
     </div>
   </div>
 
-  <div class="panel-body" >
-    Irendwelche infos zur Aktivität
-
-
-    <app-activty-conflict-list></app-activty-conflict-list>
+  <div class="panel-body">
+    {{item.desc}}
+    <br>
+    <br>
+    <app-activty-conflict-list *ngIf="item.conflicts" [conflicts]="item.conflicts"></app-activty-conflict-list>
 
 
     <!-- List group -->
@@ -52,5 +69,5 @@
 
     </ul>
   </div>
-  <div class="panel-footer"> <i> Erstellt am : 22:01.2017 13:00 von Denis Bittante</i></div>
+  <div class="panel-footer"><i> Erstellt am : 22:01.2017 13:00 von Denis Bittante</i></div>
 

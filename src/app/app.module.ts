@@ -13,6 +13,7 @@ import { ActivityDetailComponent }      from './activity/activty-list/activity-d
 import { ActivityEditComponent }        from './activity/activty-list/activity-edit/activity-edit.component';
 import { ActivtyConflictListComponent } from './activity/activty-conflict-list/activty-conflict-list.component';
 import { ActivityConflictItemComponent } from './activity/activty-conflict-list/activity-conflict-item/activity-conflict-item.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 
 
@@ -27,7 +28,9 @@ import { ActivityConflictItemComponent } from './activity/activty-conflict-list/
     ActivityDetailComponent,
     ActivityEditComponent,
     ActivtyConflictListComponent,
-    ActivityConflictItemComponent
+    ActivityConflictItemComponent,
+    DropdownDirective,
+
   ],
   imports: [
     BrowserModule,

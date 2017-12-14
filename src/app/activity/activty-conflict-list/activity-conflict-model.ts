@@ -2,7 +2,7 @@
  * Created by Denis Bittante on 13.12.2017.
  */
 
-export class Conflicts {
+export class Conflict {
 
   public id: number;
   public error_number: number;

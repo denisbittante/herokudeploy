@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Conflict} from "./activity-conflict-model";
 
 @Component({
   selector: 'app-activty-conflict-list',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivtyConflictListComponent implements OnInit {
 
-  constructor() { }
+  @Input() conflicts: Conflict[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

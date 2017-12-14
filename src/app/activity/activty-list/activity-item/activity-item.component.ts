@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Activity} from "../../activity-model";
 
 @Component({
   selector: 'app-activity-item',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: Activity;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

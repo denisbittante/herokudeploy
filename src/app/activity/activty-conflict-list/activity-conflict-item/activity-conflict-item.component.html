@@ -1,7 +1,7 @@
-<div class="alert alert-danger " role="alert">
-  Diese Aktivität überlappt sich ganz oder teilweise mit
-  <a href="#" class="alert-link">Anderes Ding</a> und <a href="#" class="alert-link">Anderes Ding</a><br><br>
+<div class="alert alert-danger " role="alert" [hidden]="conflict.ignored">
+  {{conflict.error_number}} <a href="#" class="alert-link">Anderes Ding</a> und <a href="#" class="alert-link">Anderes
+  Ding</a><br><br>
 
-    <input type="button" class="btn btn-danger " value="Konflikt ignorieren">
-    <input type="button" class="btn btn-danger " value="Aktivität bearbeiten">
+  <input type="button" class="btn btn-danger " value="Konflikt ignorieren" (click)="ignoreExcpetion()" >
+  <input type="button" class="btn btn-danger " value="Aktivität bearbeiten">
 </div>

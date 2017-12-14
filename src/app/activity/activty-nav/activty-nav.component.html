@@ -1,9 +1,24 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
   <div class="container-fluid">
     <ul class="nav nav-stacked">
-      <button type="button" class="btn btn-success navbar-btn "><span class="glyphicon glyphicon-plus-sign"></span>
-        Aktivität erstellen
-      </button>
+      <div class="btn-group" appDropdown>
+        <a href="/" class="btn btn-success dropdown-toggle ">
+          <span class="glyphicon glyphicon-plus-sign" (click)="onCreateActivity()"></span>
+          Aktivität erstellen
+        </a>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Massenerstellung</a></li>
+
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Third App erstellung</a></li>
+        </ul>
+      </div>
+
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-time"></span> Aktivitäten</a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a></li>
