@@ -5,19 +5,19 @@
 export class Conflicts {
 
   public id: number;
-  public errornumber: number;
+  public error_number: number;
   public parameter: string; // je nach Fehler werden diese Anders interpretiert
   public ignored: boolean = false;
 
 
-  constructor(id: number, errornumber: number, parameter: string) {
+  constructor(id: number, error_number: number, parameter: string) {
     this.id = id;
-    this.errornumber = errornumber;
+    this.error_number = error_number;
     this.parameter = parameter;
   }
 
   setIgnored() {
-    this.setIgnored() = true;
+    this.ignored = true;
   }
 
 }
