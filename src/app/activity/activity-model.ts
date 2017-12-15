@@ -1,6 +1,3 @@
-import {Person} from "../person/person-model";
-import {ActivityType} from "./activity-type-model";
-import {Conflict} from "./activity-conflict-list/activity-conflict-model";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
@@ -11,36 +8,61 @@ export class Activity {
   public title: string;
   public desc: string;
   public fromDay: Date;
-  public fromTime: string;
   public toDay: Date;
-  public toTime: string;
   public isAllDayEvent: boolean = false;
   public place: string;
-  public person_in_charge: Person;
-  public person_helper: Person[];
-  public activityType: ActivityType;
+  public person_in_charge: number;
+  public person_helper: number[];
+  public activityType: number;
   public space: number;
   public status: string = 'o'; // o= open ; f = finished; a = archived; r=released (freigeben)
   public parent_id: number;
-  public child_activities: Activity[];
-  public label: string[];
-  public conflicts: Conflict[];
+  public child_activities: number;
+  public label: number[];
+  public conflicts: number[];
   public mut_date: Date;
   public create_date: Date;
-  public author: Person;
+  public author: number;
 
-  constructor(title: string, desc: string, fromDay: Date, toDay: Date, person_in_charge: Person, label: string[], conflicts: Conflict[]) {
+  constructor(id: number,
+              title: string,
+              desc: string,
+              fromDay: Date,
+              toDay: Date,
+              isAllDayEvent: boolean = false,
+              place: string,
+              person_in_charge: number,
+              person_helper: number[],
+              activityType: number,
+              space: number,
+              status: string = 'o',
+              parent_id: number,
+              child_activities: number,
+              label: number[],
+              conflicts: number[],
+              mut_date: Date,
+              create_date: Date,
+              author: number) {
+    this.id = id;
     this.title = title;
     this.desc = desc;
     this.fromDay = fromDay;
     this.toDay = toDay;
+    this.isAllDayEvent = isAllDayEvent;
+    this.place = place;
     this.person_in_charge = person_in_charge;
+    this.person_helper = person_helper;
+    this.activityType = activityType;
+    this.space = space;
+    this.status = status;
+    this.parent_id = parent_id;
+    this.child_activities = child_activities;
     this.label = label;
     this.conflicts = conflicts;
+    this.mut_date = mut_date;
+    this.create_date = create_date;
+    this.author = author;
   }
 
-  public addLabel(label: string) {
-    this.label.push(label);
-  }
 
 }

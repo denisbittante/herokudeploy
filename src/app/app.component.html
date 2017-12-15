@@ -1,15 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <app-activity-header></app-activity-header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">kexjw</a>
+          </div>
+          <ul class="nav navbar-nav">
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown" appDropdown>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false"><span class="glyphicon glyphicon-th"></span></a>
+              <div class=" dropdown-menu mydropdown ">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a routerLink="/activities"><span class="glyphicon glyphicon-list btn-lg"></span><br>Programme</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a routerLink="/calendar"><span class="glyphicon glyphicon-calendar btn-lg"></span><br>Kalender</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a routerLink="/persons"><span class="glyphicon glyphicon-user btn-lg"></span><br>Personen</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a routerLink="/activities"><span class="glyphicon glyphicon-stats btn-lg"></span><br>Statistik</a>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-4 text-center" *ngFor="let space of spaces">
+                    <a routerLink="/space/{{space.id}}"><span class="glyphicon glyphicon-record btn-lg"></span><br>{{space.name}}</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a routerLink="/space/add"><span class="glyphicon glyphicon-plus btn-lg"></span><br>Neu</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+            <li><a><span class="glyphicon glyphicon-bell"></span> <span class="badge "> </span> </a></li>
+
+
+            <li><a routerLinkActive="active" routerLink="/user"><span class="glyphicon glyphicon-user"></span> Max
+              Muster</a></li>
+          </ul>
+        </div>
+      </nav>
+
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-3">
-      <app-activity-nav (crActivity)="onActivityCreated($event)"></app-activity-nav>
-    </div>
-    <div class="col-lg-9">
-      <app-activity-list></app-activity-list>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

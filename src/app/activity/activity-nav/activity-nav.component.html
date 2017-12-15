@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <ul class="nav nav-stacked">
       <div class="btn-group" appDropdown>
-        <a href="/" class="btn btn-success dropdown-toggle ">
+        <a routerLink="/" class="btn btn-success dropdown-toggle ">
           <span class="glyphicon glyphicon-plus-sign" (click)="onCreateActivity()"></span>
           Aktivität erstellen
         </a>
@@ -19,11 +19,11 @@
         </ul>
       </div>
 
-      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-time"></span> Aktivitäten</a></li>
-      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a></li>
-      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a></li>
-      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-wrench"></span> Von mir erstellt </a></li>
-      <li role="presentation"><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> Konflikte <span
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-time"></span> Aktivitäten</a></li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a></li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a></li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-wrench"></span> Von mir erstellt </a></li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-warning-sign"></span> Konflikte <span
         class="badge">5</span></a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-save"></span> Exportieren</a></li>
       <hr>

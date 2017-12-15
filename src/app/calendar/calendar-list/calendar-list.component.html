@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-3">
-    <app-activity-nav></app-activity-nav>
+    <app-calendar-nav></app-calendar-nav>
   </div>
   <div class="col-lg-9">
 
@@ -20,8 +20,7 @@
     </div>
 
     <h3>this week </h3>
-    <app-activity-item *ngFor="let item of activitylist" [item]="item "></app-activity-item>
-
+    <app-calendar-item *ngFor="let item of calendarList" ></app-calendar-item>
 
 
   </div>

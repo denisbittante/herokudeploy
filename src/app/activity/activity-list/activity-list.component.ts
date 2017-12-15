@@ -7,9 +7,10 @@ import {ActivityService} from "../activity.service";
   selector: 'app-activity-list',
   templateUrl: 'activity-list.component.html',
   styleUrls: ['activity-list.component.css'],
-  providers: [ActivityService]
 })
 export class ActivityListComponent implements OnInit {
+
+  searchInput: string;
 
   activitylist: Activity[] = [];
 
