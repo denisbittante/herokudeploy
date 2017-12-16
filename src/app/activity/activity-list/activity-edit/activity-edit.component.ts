@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {ActivityService} from "../../activity.service";
+import {Activity} from "../../activity-model";
 
 @Component({
   selector: 'app-activity-edit',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityEditComponent implements OnInit {
 
-  constructor() { }
+  activtiy: Activity;
+  id: number;
+
+  constructor(private route: ActivatedRoute, private activitysrv:ActivityService) {
+  }
 
   ngOnInit() {
+
+    this.id = this.route.snapshot.params['id'];
+    this.activtiy = this.activitysrv.getActivity(this.id);
+
   }
 
 }

@@ -24,12 +24,19 @@ import {ConflictSerivice} from "./activity/activity-conflict-list/activity-confl
 import {CalendarService} from "./calendar/calendar.service";
 import {PersonService} from "./person/person.service";
 import {ActivityTypeService} from "./activity/activity-type.service";
+import { CalendarEditComponent } from './calendar/calendar-edit/calendar-edit.component';
+import { CalendarDetailComponent } from './calendar/calendar-detail/calendar-detail.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: ActivityListComponent},
   {path: 'activities', component: ActivityListComponent},
+  {path: 'activities/detail/:id', component: ActivityDetailComponent},
+  {path: 'activity/edit', component: ActivityEditComponent},
+  {path: 'activity/detail/:id/edit', component: ActivityEditComponent},
   {path: 'calendar', component: CalendarListComponent},
+  {path: 'calendar/detail/:id', component: CalendarDetailComponent},
+  {path: 'calendar/edit/:id', component: CalendarEditComponent},
   {path: 'activity/detail', component: ActivityDetailComponent}
 ];
 
@@ -47,7 +54,9 @@ const appRoutes: Routes = [
     DropdownDirective,
     CalendarListComponent,
     CalendarNavComponent,
-    CalendarItemComponent
+    CalendarItemComponent,
+    CalendarEditComponent,
+    CalendarDetailComponent
 
   ],
   imports: [

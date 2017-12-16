@@ -1,17 +1,18 @@
-<nav class="navbar-default navbar-static-side" role="navigation">
+<nav class="navbar-default" role="navigation">
   <div class="container-fluid">
     <ul class="nav nav-stacked">
-      <div class="btn-group" appDropdown>
-        <a routerLink="/" class="btn btn-success dropdown-toggle ">
-          <span class="glyphicon glyphicon-plus-sign" (click)="onCreateActivity()"></span>
+      <div class="btn-group " appDropdown>
+        <a routerLink="/activity/edit" class="btn btn-success dropdown-toggle ">
+          <span class="glyphicon glyphicon-plus-sign"></span>
           Aktivität erstellen
         </a>
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+
+        <button type="button" class="btn btn-success dropdown-toggle "  data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
           <span class="caret"></span>
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu ">
           <li><a href="#">Massenerstellung</a></li>
 
           <li role="separator" class="divider"></li>
@@ -20,9 +21,12 @@
       </div>
 
       <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-time"></span> Aktivitäten</a></li>
-      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a></li>
-      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a></li>
-      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-wrench"></span> Von mir erstellt </a></li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-inbox"></span> Meine Aktivitäten</a>
+      </li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-folder-close"></span> Archiviert</a>
+      </li>
+      <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-wrench"></span> Von mir erstellt </a>
+      </li>
       <li role="presentation"><a routerLink="/"><span class="glyphicon glyphicon-warning-sign"></span> Konflikte <span
         class="badge">5</span></a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-save"></span> Exportieren</a></li>

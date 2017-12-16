@@ -45,6 +45,14 @@ export class ActivityService {
     return this.activitylist.slice();
 
   }
+  getActivity(id:number) {
+    return this.activitylist.find( this.findId ,id);
+  }
+
+
+  findId(activity: Activity, id:number) {
+    return activity.id === id;
+  }
 
 
 }

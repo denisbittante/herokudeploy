@@ -5,7 +5,7 @@ import {ActivityType} from "./activity-type-model";
 export class ActivityTypeService {
 
 
-  public activitytypes: ActivityType[] = [
+  public activitytypes : ActivityType[] = [
 
     new ActivityType(1, 'Something', [1, 2, 3], [1, 2, 3]),
     new ActivityType(2, 'Best Activtytype', [2, 3], [2, 3]),
