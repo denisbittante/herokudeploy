@@ -1,5 +1,4 @@
 import {SpaceModel} from "./space-model";
-import {isNodeFlagSet} from "tslint";
 /**
  * Created by Denis Bittante on 15.12.2017.
  */
