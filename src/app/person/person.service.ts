@@ -1,5 +1,4 @@
 import {Person} from "./person-model";
-import {validate} from "codelyzer/walkerFactory/walkerFn";
 /**
  * Created by Denis Bittante on 15.12.2017.
  */
