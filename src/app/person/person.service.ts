@@ -4,20 +4,17 @@ import {Person} from "./person-model";
  */
 export class PersonService {
 
-  public persons: Person[] = [
-    new Person(1, 'Denis', 'Bittante'),
-    new Person(2, 'Emanuel', 'Heizmann'),
-    new Person(3, 'Manuela', 'Von Arx Langername')
+  persons: Person[] = [{id: 1, callname: 'Denis', name: 'Bittante'},
+    {id: 2, callname: 'Emanuel', name: 'Heizmann'},
+    {id: 3, callname: 'Manuela', name: 'Von Arx Langername'}
   ]
 
-  getPerson(id: number) {
+  public getPerson(sid: number) {
 
-    return this.persons.find(this.findId, id);
-
-  }
-
-  findId(person: Person, id: number) {
-    return person.id === id;
+    var result: Person = this.persons.filter(function (obj: Person) {
+      return obj.id == sid;
+    });
+    return result;
   }
 
 

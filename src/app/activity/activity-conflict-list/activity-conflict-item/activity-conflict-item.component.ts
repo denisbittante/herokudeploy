@@ -17,7 +17,7 @@ export class ActivityConflictItemComponent implements OnInit {
   }
 
   ignoreExcpetion() {
-    this.conflict.setIgnored();
+      this.conflict.setIgnored();
 
   }
 

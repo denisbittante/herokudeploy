@@ -1,13 +1,10 @@
-.mydropdown {
-  padding: 28;
-  min-width: 350px;
-  min-height: 50px;
-}
 
 .mydropdown {
+  padding: 28;
   margin-bottom: 8px;
   margin-left: 2px;
   margin-top: 8px;
   margin-right: 2px;
+  min-height: 50px;
   min-width: 350px;
 }

@@ -43,8 +43,8 @@
 
       </div>
       <div class="col-md-2 text-right">
-        <b><span class="glyphicon glyphicon-user"></span> {{item.person_in_charge.callname}}
-          {{item.person_in_charge.name}} </b>
+        <b><span class="glyphicon glyphicon-user"></span>{{ personInCharge.callname}}
+          {{personInCharge.name}} </b>
       </div>
     </div>
   </div>
@@ -56,7 +56,10 @@
     <app-activity-conflict-list *ngIf="item.conflicts" [conflicts]="item.conflicts"></app-activity-conflict-list>
 
 
-    <!-- List group -->
+    <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>
+
+
+    <!-- List group
     <div class="panel panel-default">
       <div class="panel-heading"><span class="text-capitalize">
       Namum 1 bis Habakuk</span>
@@ -70,7 +73,7 @@
       <li class="list-group-item">Part 1</li>
       <li class="list-group-item">Part 2</li>
 
-    </ul>
+    </ul>-->
   </div>
   <div class="panel-footer"><i> Erstellt am : 22:01.2017 13:00 von Denis Bittante</i></div>
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ActivityService} from "../../activity.service";
 import {Activity} from "../../activity-model";
 
@@ -13,7 +13,7 @@ export class ActivityEditComponent implements OnInit {
   activtiy: Activity;
   id: number;
 
-  constructor(private route: ActivatedRoute, private activitysrv:ActivityService) {
+  constructor(private router: Router, private route: ActivatedRoute, private activitysrv: ActivityService) {
   }
 
   ngOnInit() {
@@ -21,6 +21,10 @@ export class ActivityEditComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.activtiy = this.activitysrv.getActivity(this.id);
 
+  }
+
+  cancel() {
+    this.router.navigate(['activities']);
   }
 
 }
