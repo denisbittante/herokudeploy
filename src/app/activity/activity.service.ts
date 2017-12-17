@@ -16,7 +16,7 @@ export class ActivityService {
       new Date(),
       false,
       'No Place',
-      1,
+      2,
       [1, 2],
       1,
       12,

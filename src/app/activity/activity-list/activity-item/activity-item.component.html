@@ -32,7 +32,7 @@
       <a routerLink="/activity/detail">
         <div class="col-md-5">
           <h5 class="text-capitalize text-primary">
-            {{item.title}}
+            <b> {{item.title}}</b>
           </h5>
           <h6>
             <span class="glyphicon glyphicon-time"></span>
@@ -55,7 +55,7 @@
   <div class="panel-body">
     {{item.desc}}
 
-    <app-activity-conflict-list *ngIf="item.conflicts" [conflicts]="item.conflicts"></app-activity-conflict-list>
+    <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
 
 
     <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>

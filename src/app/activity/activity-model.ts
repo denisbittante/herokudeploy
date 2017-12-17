@@ -16,8 +16,8 @@ export class Activity {
   public activityType: number;
   public space: number;
   public status: string = 'o'; // o= open ; f = finished; a = archived; r=released (freigeben)
-  public parent_id: number;
-  public child_activities: number;
+  public parent_id: Activity;
+  public child_activities: Activity[];
   public label: number[];
   public conflicts: number[];
   public mut_date: Date;
@@ -36,8 +36,8 @@ export class Activity {
               activityType: number,
               space: number,
               status: string = 'o',
-              parent_id: number,
-              child_activities: number,
+              parent_id: Activity,
+              child_activities: Activity[],
               label: number[],
               conflicts: number[],
               mut_date: Date,
