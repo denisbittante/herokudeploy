@@ -53,7 +53,7 @@
   </div>
 
   <div class="panel-body">
-    {{item.desc}}
+    <div [innerHTML]="item.desc"></div>
 
     <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
 

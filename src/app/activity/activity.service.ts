@@ -43,7 +43,20 @@ export class ActivityService {
         new Date(),
         false, 'No Place',
         1, [1, 2], 1, 12, 'o', null,
-        [], [1, 2],
+        [
+          new Activity(1,'SCHÄTZE AUS GOTTES WORT',
+            `[Zeige das Video Einführung in Sacharja.] <br>
+Sach 8:20-22 — Menschen aus allen Sprachen der Nationen suchen Jehovas Gunst (w14 15. 11. 27 Abs. 14)<br>
+Sach 8:23 — Die anderen Schafe unterstützen die Gesalbten gern (w16.01 23 Abs. 4; w09 15. 2. 27 Abs. 14)`
+            ,new Date(),
+            new Date(),
+            false, 'No Place',
+            1, [1, 2], 1, 12, 'o', null,
+            [], [1, 2],
+            [125], new Date(), new Date(), 2)
+
+
+        ], [1, 2],
         [125], new Date(), new Date(), 2
       ),
         new Activity(1,'UNSER LEBEN ALS CHRIST',
