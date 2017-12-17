@@ -65,4 +65,12 @@ export class Activity {
   }
 
 
+  public isSameDate = function () {
+    return (
+      this.fromDay.getFullYear() === this.toDay.getFullYear() &&
+      this.fromDay.getMonth() === this.toDay.getMonth() &&
+      this.fromDay.getDate() === this.toDay.getDate()
+    );
+  }
+
 }

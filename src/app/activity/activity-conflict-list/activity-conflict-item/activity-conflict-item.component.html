@@ -1,7 +1,8 @@
 <div class="alert alert-danger " role="alert" [hidden]="conflict.ignored">
+  <i>Achtung : </i>
   {{conflict.error_number}} <a href="#" class="alert-link">Anderes Ding</a> und <a href="#" class="alert-link">Anderes
   Ding</a><br><br>
 
-  <input type="button" class="btn btn-danger " value="Konflikt ignorieren" (click)="ignoreExcpetion()" >
+  <input type="button" class="btn btn-danger " value="Konflikt ignorieren" (click)="ignoreExcpetion()">
   <input type="button" class="btn btn-danger " value="Aktivität bearbeiten">
 </div>

@@ -1,10 +1,15 @@
 .panel {
   margin-bottom: 5px;
+
+  margin-left: 15px;
+}
+.panel-body{
+  padding-right: 0px;
 }
 
 .panel-heading {
   padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 20px;
+  padding-left: 5px;
 }
