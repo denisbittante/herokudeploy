@@ -9,13 +9,6 @@ export class PersonService {
     {id: 3, callname: 'Manuela', name: 'Von Arx Langername'}
   ]
 
-  public getPerson(sid: number) {
-
-    var result: Person = this.persons.filter(function (obj: Person) {
-      return obj.id == sid;
-    });
-    return result;
-  }
 
 
 }

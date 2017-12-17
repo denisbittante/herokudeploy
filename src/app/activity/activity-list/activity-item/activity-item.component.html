@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
 
-    <div class="row">
+    <div class="row ">
 
 
       <div class="col-md-1 pull-right">
@@ -30,19 +30,22 @@
       </div>
 
       <a routerLink="/activity/detail">
-        <div class="col-md-2">
-          <span class="glyphicon glyphicon-time"></span> {{item.fromDay | date: "dd.MM.yy"}} 19:00 - {{item.toDay| date:
-          "dd.MM.yy"}} 20:00
+        <div class="col-md-5">
+          <h5 class="text-capitalize text-primary">
+            {{item.title}}
+          </h5>
+          <h6>
+            <span class="glyphicon glyphicon-time"></span>
+            {{item.fromDay | date: "dd.MM.yy"}} 19:00 - {{item.toDay| date:"dd.MM.yy"}} 20:00
+          </h6>
         </div>
-        <div class="col-md-4">
-          <h4 class="text-capitalize text-primary"> {{item.title}}</h4>
-        </div>
+
       </a>
       <div class="col-md-3 text-right">
         <span class="label label-primary" *ngFor="let label of item.label">{{label}}</span>
 
       </div>
-      <div class="col-md-2 text-right">
+      <div class="col-md-3 text-right">
         <b><span class="glyphicon glyphicon-user"></span>{{ personInCharge.callname}}
           {{personInCharge.name}} </b>
       </div>
@@ -51,8 +54,7 @@
 
   <div class="panel-body">
     {{item.desc}}
-    <br>
-    <br>
+
     <app-activity-conflict-list *ngIf="item.conflicts" [conflicts]="item.conflicts"></app-activity-conflict-list>
 
 
@@ -75,5 +77,8 @@
 
     </ul>-->
   </div>
-  <div class="panel-footer"><i> Erstellt am : 22:01.2017 13:00 von Denis Bittante</i></div>
+  <div class="panel-footer">
+    <small><i> Erstellt am : 22:01.2017 13:00 von Denis Bittante</i></small>
+  </div>
 
+</div>

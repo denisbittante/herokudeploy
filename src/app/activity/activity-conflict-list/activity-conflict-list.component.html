@@ -1,7 +1,5 @@
-
-
-
-<hr>
-<h4>Achtung</h4>
-<app-activity-conflict-item *ngFor="let conflict of conflicts" [conflict]="conflict"></app-activity-conflict-item>
-
+<div *ngIf="conflicts.length>0">
+  <hr>
+  <h4>Achtung</h4>
+  <app-activity-conflict-item *ngFor="let conflict of conflicts" [conflict]="conflict"></app-activity-conflict-item>
+</div>

@@ -52,7 +52,6 @@ export class ActivityService {
           false, 'No Place',
           1, [1, 2], 1, 12, 'o', null,
           [
-
             new Activity(1,'Lied 96',
               '',new Date(),
               new Date(),
