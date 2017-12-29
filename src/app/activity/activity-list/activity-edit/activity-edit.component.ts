@@ -114,14 +114,13 @@ export class ActivityEditComponent implements OnInit {
     var space = this.activityForm.get('space').value;
     var status = this.activityForm.get('status').value;
     var linked = this.activityForm.get('linked').value;
-    var labels = this.activityForm.get('labels').value;
+    // var labels = this.activityForm.get('labels').value;
 
 
     var labels = this.labelsrv.labels.map((selected, i) => {
-      return {
-        id: this.labelsrv.labels[i].id,
-        selected
-      }
+      return this.labelsrv.labels[i].id;
+
+
     });
 
     this.activitysrv.addActivity(new Activity(
