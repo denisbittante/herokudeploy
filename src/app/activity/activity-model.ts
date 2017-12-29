@@ -1,3 +1,4 @@
+import {tryCatch} from "rxjs/util/tryCatch";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
@@ -24,25 +25,25 @@ export class Activity {
   public create_date: Date;
   public author: number;
 
-  constructor(id: number,
-              title: string,
-              desc: string,
-              fromDay: Date,
-              toDay: Date,
-              isAllDayEvent: boolean = false,
-              place: string,
-              person_in_charge: number,
-              person_helper: number[],
-              activityType: number,
-              space: number,
-              status: string = 'o',
-              parent_id: Activity,
-              child_activities: Activity[],
-              label: number[],
-              conflicts: number[],
-              mut_date: Date,
-              create_date: Date,
-              author: number) {
+  constructor(id ?: number,
+              title ?: string,
+              desc ?: string,
+              fromDay ?: Date,
+              toDay ?: Date,
+              isAllDayEvent ?: boolean ,
+              place ?: string,
+              person_in_charge ?: number,
+              person_helper ?: number[],
+              activityType ?: number,
+              space ?: number,
+              status ?: string ,
+              parent_id ?: Activity,
+              child_activities ?: Activity[],
+              label ?: number[],
+              conflicts ?: number[],
+              mut_date ?: Date,
+              create_date ?: Date,
+              author ?: number) {
     this.id = id;
     this.title = title;
     this.desc = desc;
@@ -65,12 +66,20 @@ export class Activity {
   }
 
 
+
   public isSameDate = function () {
-    return (
-      this.fromDay.getFullYear() === this.toDay.getFullYear() &&
-      this.fromDay.getMonth() === this.toDay.getMonth() &&
-      this.fromDay.getDate() === this.toDay.getDate()
-    );
+
+    if (this.fromDay !== 'undefined' && this.toDay !== 'undefined') {
+      return (
+        this.fromDay.getFullYear() === this.toDay.getFullYear() &&
+        this.fromDay.getMonth() === this.toDay.getMonth() &&
+        this.fromDay.getDate() === this.toDay.getDate()
+      );
+    } else {
+      return false;
+    }
+
+
   }
 
 }
