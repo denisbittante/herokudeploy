@@ -23,18 +23,23 @@ export class ActivityItemComponent implements OnInit {
   ngOnInit() {
     console.log(this.personInCharge);
 
-    this.personInCharge = this.getPerson('person_in_charge')[0];
+    if (this.getPerson('person_in_charge')) {
+      this.personInCharge = this.getPerson('person_in_charge')[0];
+    }
     this.helper = this.getPerson('person_in_charge');
 
   }
 
   private getPerson(persId: string) {
 
-    var resultArray: Person[] = []
-    for (const item of this.personsrv.persons) {
 
-      if (item.id === this.item[persId]) {
-        resultArray.push(item);
+    var resultArray: Person[] = []
+    if (this.item) {
+      for (const item of this.personsrv.persons) {
+
+        if (item.id === this.item[persId]) {
+          resultArray.push(item);
+        }
       }
     }
     return resultArray;

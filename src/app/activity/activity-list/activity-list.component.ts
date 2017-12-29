@@ -19,7 +19,7 @@ export class ActivityListComponent implements OnInit {
 
   ngOnInit() {
     this.activitylist = this.activityService.activitylist;
-
+    console.log(this.activitylist);
   }
 
 }

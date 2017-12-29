@@ -17,11 +17,17 @@
           </div>
         </form>
       </div>
-  </div>
+    </div>
 
-    <h3>this week </h3>
+
     <app-activity-item *ngFor="let item of activitylist" [item]="item "></app-activity-item>
 
+    <!-- TODO: nachschauen ob der User einen Space besitzt-->
+    <div class="jumbotron">
+      <h1><span class="glyphicon glyphicon-record"></span> Kein Space vorhanden</h1>
+      <p>Du brauchst einen Space um deine Aktivitäten planen zu können. Leg doch einen Neuen an!</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Neuer Space erstellen</a></p>
+    </div>
 
 
   </div>

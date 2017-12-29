@@ -52,50 +52,13 @@
     <div [innerHTML]="item.desc"></div>
 
     <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
-
-
     <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>
 
-
-    <!-- List group
-    <div class="panel panel-default">
-      <div class="panel-heading"><span class="text-capitalize">
-      Namum 1 bis Habakuk</span>
-        <ul class="list-group ">
-          <li class="list-group-item ">Part 1</li>
-          <li class="list-group-item ">Part 1</li>
-        </ul>
-      </div>
-    </div>
-    <ul class="list-group">
-      <li class="list-group-item">Part 1</li>
-      <li class="list-group-item">Part 2</li>
-
-    </ul>-->
   </div>
 
 
 
 
-  <!-- Modal -->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 </div>
