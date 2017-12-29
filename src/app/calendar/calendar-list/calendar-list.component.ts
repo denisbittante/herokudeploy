@@ -8,7 +8,14 @@ import {CalendarEntryModel} from "../calendar-model";
 })
 export class CalendarListComponent implements OnInit {
 
-  calendarList: CalendarEntryModel[] = [];
+  public calendarList: CalendarEntryModel[] = [
+    new CalendarEntryModel(
+      'Title For Example', 'CalendarInfo', [0, 1], 1, 1, new Date(), new Date(), false, 1, new Date(), new Date()
+    ),
+    new CalendarEntryModel(
+      'Title For Example', 'CalendarInfo', [0, 1], 1, 1, new Date(), new Date(), false, 1, new Date(), new Date()
+    ),
+  ];
 
   constructor() {
   }
