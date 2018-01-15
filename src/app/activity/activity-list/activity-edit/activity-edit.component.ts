@@ -117,7 +117,7 @@ export class ActivityEditComponent implements OnInit {
     //var labels = this.activityForm.get('labels').value;
 
     var labels = this.labelsrv.labels.map((selected, i) => {
-     return this.labelsrv.labels[i].id;
+      return this.labelsrv.labels[i].id;
 
 
     });
@@ -148,11 +148,12 @@ export class ActivityEditComponent implements OnInit {
     //  this.activityForm.reset();
   }
 
-  get getLabels () {
-    return this.activityForm.get('labels');
+  get getLabels() {
+    return <FormArray> this.activityForm.get('labels');
   }
-  get getHelpers(){
-    return this.activityForm.get('helpers');
+
+  get getHelpers() {
+    return <FormArray> this.activityForm.get('helpers');
 
   }
 
