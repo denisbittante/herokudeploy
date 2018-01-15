@@ -148,6 +148,13 @@ export class ActivityEditComponent implements OnInit {
     //  this.activityForm.reset();
   }
 
+  get getLabels () {
+    return this.activityForm.get('labels');
+  }
+  get getHelpers(){
+    return this.activityForm.get('helpers');
+
+  }
 
   deleteLabel(index: number) {
     console.log("To delete Index : " + index);

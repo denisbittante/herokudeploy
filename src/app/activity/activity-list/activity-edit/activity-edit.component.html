@@ -154,7 +154,7 @@
 
             <div formArrayName="helpers">
 
-            <span *ngFor="let helper of activityForm.get('helpers').controls; let i = index">
+            <span *ngFor="let helper of getHelpers.controls; let i = index">
               <span class="label label-primary" style="display:inline-block">
                   <span class="glyphicon glyphicon-trash" (click)="deletePerson(i)"></span> {{personsrv.persons[i].callname}} {{personsrv.persons[i].name}}
               </span>
@@ -175,7 +175,7 @@
             <input type="text" class="form-control" placeholder="Search for...">
           </div><!-- /input-group -->
 
-          <div *ngFor="let helper of activityForm.get('helpers').controls; let i=index">
+          <div *ngFor="let helper of getHelpers.controls; let i=index">
 
             <input type="checkbox" [formControl]="helper"/> {{personsrv.persons[i].callname}}
             {{personsrv.persons[i].name}}
@@ -232,7 +232,7 @@
 
           <div formArrayName="labels">
 
-            <span *ngFor="let labelControl of activityForm.get('labels').controls; let i = index">
+            <span *ngFor="let labelControl of getLabels.controls; let i = index">
               <span class="label label-primary" style="display:inline-block">
                   <span class="glyphicon glyphicon-trash" (click)="deleteLabel(i)"></span> {{labelsrv.labels[i].name}}
               </span>
@@ -251,7 +251,7 @@
 
       <div class="panel panel-default">
         Suggestions
-        <div *ngFor="let label of activityForm.get('labels').controls; let i=index">
+        <div *ngFor="let label of getLabels.controls; let i=index">
 
           <input type="checkbox" [formControl]="label"/> {{labelsrv.labels[i].name}}
         </div>
