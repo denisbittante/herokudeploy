@@ -2,16 +2,16 @@
   <div class="panel-heading">
 
     <div class="row">
-        <div class="col">
-            <a routerLink="/activity/detail/{{item.activityid}}">
-              <div class="col-md-auto">
-                {{item.summary}}
-              </div>
-              <div class="col col-lg-3">
-                <span class="glyphicon glyphicon-time"></span>
-                {{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
-              </div>
-            </a>
+       
+           
+          <div class="col-md-auto">
+             <a routerLink="/activity/detail/{{item.activityid}}">{{item.summary}}</a>
+          </div>
+          <div class="col col-lg-3">
+            <span class="glyphicon glyphicon-time"></span>
+            {{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
+          </div>
+
           <div class="col col-lg-2 ">
 
             <div class="btn-group" appDropdown>
