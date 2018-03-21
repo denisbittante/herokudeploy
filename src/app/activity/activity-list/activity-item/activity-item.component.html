@@ -2,15 +2,15 @@
   <div class="panel-heading">
 
     <div class="row">   
-          <div class="col">
+          <div class="col-md-8">
              <a routerLink="/activity/detail/{{item.activityid}}">{{item.summary}}</a>
           </div>
-          <div class="col col-md-3">
+          <div class="col-md-3">
             <span class="glyphicon glyphicon-time"></span>
             {{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
           </div>
 
-          <div class="col col-md-2 ">
+          <div class="col-md-1 ">
 
             <div class="btn-group" appDropdown>
               <a
