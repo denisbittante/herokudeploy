@@ -78,7 +78,7 @@ export class ActivityEditComponent implements OnInit {
 
     if (this.id > 0) {
       this.editing = true;
-      this.activity = this.activitysrv.getActivity(this.id);
+      //TODO:  this.activity = this.activitysrv.getActivity(this.id);
 
     } else {
       this.editing = false;
@@ -88,7 +88,7 @@ export class ActivityEditComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.activity = this.activitysrv.getActivity(params['id']);
+          //TODO:  this.activity = this.activitysrv.getActivity(params['id']);
         }
       )
   }
@@ -123,11 +123,14 @@ export class ActivityEditComponent implements OnInit {
     });
 
     this.activitysrv.addActivity(new Activity(
-      -1,
+      null,
       title,
       desc,
-      new Date(fromDate + " " + fromTime),
-      new Date(toDate + " " + toTime),
+      null,
+      null,
+
+      // TODO:   new Date(fromDate + " " + fromTime),
+      // TODO:  new Date(toDate + " " + toTime),
       allDay,
       place,
       incharge,
@@ -139,8 +142,10 @@ export class ActivityEditComponent implements OnInit {
       [],
       labels,
       null,
-      new Date(),
-      new Date(),
+      null,
+      null,
+     // new Date(),
+     // new Date(),
       1
     ));
 

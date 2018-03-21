@@ -1,16 +1,15 @@
-import {tryCatch} from "rxjs/util/tryCatch";
 /**
  * Created by Denis Bittante on 13.12.2017.
  */
 
 export class Activity {
 
-  public id: number;
-  public title: string;
-  public desc: string;
-  public fromDay: Date;
-  public toDay: Date;
-  public isAllDayEvent: boolean = false;
+  public activityid: number;
+  public summary: string;
+  public description: string;
+  public actvityfrom: Date;
+  public activityto: Date;
+  public isallday: boolean = false;
   public place: string;
   public person_in_charge: number;
   public person_helper: number[];
@@ -21,35 +20,49 @@ export class Activity {
   public child_activities: Activity[];
   public label: number[];
   public conflicts: number[];
-  public mut_date: Date;
-  public create_date: Date;
+  public updated: Date;
+  public created: Date;
   public author: number;
 
-  constructor(id ?: number,
-              title ?: string,
-              desc ?: string,
-              fromDay ?: Date,
-              toDay ?: Date,
-              isAllDayEvent ?: boolean ,
+  constructor(activityid ?: number,
+              summary ?: string,
+              description ?: string,
+              actvityfrom ?: number,
+              activityto ?: number,
+              isallday ?: boolean,
               place ?: string,
               person_in_charge ?: number,
               person_helper ?: number[],
               activityType ?: number,
               space ?: number,
-              status ?: string ,
+              status ?: string,
               parent_id ?: Activity,
               child_activities ?: Activity[],
               label ?: number[],
               conflicts ?: number[],
-              mut_date ?: Date,
-              create_date ?: Date,
+              updated ?: number,
+              created ?: number,
               author ?: number) {
-    this.id = id;
-    this.title = title;
-    this.desc = desc;
-    this.fromDay = fromDay;
-    this.toDay = toDay;
-    this.isAllDayEvent = isAllDayEvent;
+
+
+
+    this.actvityfrom = new Date();
+    this.actvityfrom.setTime(actvityfrom);
+
+    this.activityto = new Date();
+    this.activityto.setTime(activityto);
+
+    this.updated = new Date();
+    this.updated.setTime(updated)
+
+    this.created = new Date();
+    this.created.setTime(created);
+
+
+    this.activityid = activityid;
+    this.summary = summary;
+    this.description = description;
+    this.isallday = isallday;
     this.place = place;
     this.person_in_charge = person_in_charge;
     this.person_helper = person_helper;
@@ -60,11 +73,8 @@ export class Activity {
     this.child_activities = child_activities;
     this.label = label;
     this.conflicts = conflicts;
-    this.mut_date = mut_date;
-    this.create_date = create_date;
     this.author = author;
   }
-
 
 
   public isSameDate = function () {

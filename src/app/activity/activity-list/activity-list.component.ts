@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Activity} from "../activity-model";
-
 import {ActivityService} from "../activity.service";
 
 @Component({
@@ -12,13 +11,16 @@ export class ActivityListComponent implements OnInit {
 
   searchInput: string;
 
-  activitylist: Activity[] = [];
+  activitylist: Array<Activity>;
 
   constructor(private activityService: ActivityService) {
   }
 
   ngOnInit() {
-    this.activitylist = this.activityService.activitylist;
+
+    this.activityService.list().subscribe(data => this.activitylist = data);
+
+    //this.activitylist = this.activityService.activitylist;
     console.log(this.activitylist);
   }
 

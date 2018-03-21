@@ -15,7 +15,7 @@
             <span class="glyphicon glyphicon-option-vertical"></span>
           </a>
           <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-pencil"></span> Bearbeiten</a></li>
+            <li><a class="dropdown-item"routerLink="/activity/edit/{{item.activityid}}"><span class="glyphicon glyphicon-pencil"></span> Bearbeiten</a></li>
             <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-trash"></span> Löschen</a></li>
             <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-duplicate"></span> Dupplizieren</a>
             </li>
@@ -29,32 +29,23 @@
         </div>
       </div>
 
-      <a routerLink="/activity/detail">
+
         <div class="col-md-5">
-            <p> {{item.title}}</p>
+          <a routerLink="/activity/detail/{{item.activityid}}">
+            <p> {{item.summary}}</p> </a>
             <span class="glyphicon glyphicon-time"></span>
-            {{item.fromDay | date: "dd.MM.yy"}} 19:00 - <span *ngIf="!item.isSameDate()"> {{item.toDay| date:"dd.MM.yy"}} </span> 20:00
+            {{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
         </div>
 
-      </a>
-      <div class="col-md-3 text-right">
-        <span class="label label-primary" *ngFor="let label of item.label">{{label}}</span>
 
-      </div>
+
       <div class="col-md-3 text-right">
-        <b><span class="glyphicon glyphicon-user"></span>{{ personInCharge.callname}}
-          {{personInCharge.name}} </b>
+        <b></b>
       </div>
     </div>
   </div>
 
-  <div class="panel-body">
-    <div [innerHTML]="item.desc"></div>
 
-    <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
-    <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>
-
-  </div>
 
 
 

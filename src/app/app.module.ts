@@ -25,6 +25,7 @@ import {ActivityTypeService} from "./activity/activity-type.service";
 import {CalendarEditComponent} from "./calendar/calendar-edit/calendar-edit.component";
 import {CalendarDetailComponent} from "./calendar/calendar-detail/calendar-detail.component";
 import {LabelService} from "./activity/label.service";
+import {HttpClientModule} from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ActivityService,
