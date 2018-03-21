@@ -46,7 +46,7 @@ export class ActivityItemComponent implements OnInit {
     return resultArray;
   }
 
-  private deleteActivty() {
+  public deleteActivty() {
     this.activityService.delete(this.item.activityid).subscribe();
   }
 
