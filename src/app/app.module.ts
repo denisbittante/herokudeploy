@@ -31,13 +31,12 @@ import {HttpClientModule} from '@angular/common/http';
 const appRoutes: Routes = [
   {path: '', component: ActivityListComponent},
   {path: 'activities', component: ActivityListComponent},
-  {path: 'activities/detail/:id', component: ActivityDetailComponent},
+  {path: 'activity/detail/:id', component: ActivityDetailComponent},
   {path: 'activity/edit', component: ActivityEditComponent},
   {path: 'activity/detail/:id/edit', component: ActivityEditComponent},
   {path: 'calendar', component: CalendarListComponent},
   {path: 'calendar/detail/:id', component: CalendarDetailComponent},
   {path: 'calendar/edit/:id', component: CalendarEditComponent},
-  {path: 'activity/detail', component: ActivityDetailComponent}
 ];
 
 @NgModule({

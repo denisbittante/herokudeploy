@@ -1,13 +1,72 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{item.summary}}</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="lead">
+          {{item.description}}
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-xs-12 ">
+            <span class="glyphicon glyphicon-time"></span> {{item.actvityfrom}} - {{item.activityto}}
+          </div>
+          <div class="col-xs-12 ">
+            <span class="glyphicon glyphicon-user"></span> NOT_IMPL Person
+          </div>
+          <div class="col-xs-12 ">
+            <span class="glyphicon glyphicon-cog"></span> NOT_IMPL Helper
+          </div>
+          <div class="col-xs-12 ">
+            <address>
+              <span class="glyphicon glyphicon-map-marker"></span> {{item.place}}
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+    <!-- <div [innerHTML]="item.desc"></div>
+
+   <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
+    <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>-->
+
+  </div>
+  <div class="col-xs-12">
 
 
+    <table class="table table-hover table-responsive-md">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      </tbody>
+    </table>
 
-
-<div class="panel-body">
-  <!-- <div [innerHTML]="item.desc"></div>
-
- <app-activity-conflict-list [conflicts]="item.conflicts"></app-activity-conflict-list>
-  <app-activity-item *ngFor="let item of item.child_activities" [item]="item "></app-activity-item>-->
+  </div>
 
 </div>

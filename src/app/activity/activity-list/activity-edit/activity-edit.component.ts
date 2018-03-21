@@ -78,17 +78,16 @@ export class ActivityEditComponent implements OnInit {
 
     if (this.id > 0) {
       this.editing = true;
-      //TODO:  this.activity = this.activitysrv.getActivity(this.id);
+      this.activitysrv.find(this.id).subscribe(data => this.activity = data);
 
     } else {
       this.editing = false;
-
     }
 
     this.route.params
       .subscribe(
         (params: Params) => {
-          //TODO:  this.activity = this.activitysrv.getActivity(params['id']);
+          this.activitysrv.find(params['id']).subscribe(data => this.activity = data);
         }
       )
   }
@@ -113,7 +112,7 @@ export class ActivityEditComponent implements OnInit {
     var activitytype = this.activityForm.get('activitytype').value;
     var space = this.activityForm.get('space').value;
     var status = this.activityForm.get('status').value;
-    var linked = this.activityForm.get('linked').value;
+    var parent = this.activityForm.get('linked').value;
     //var labels = this.activityForm.get('labels').value;
 
     var labels = this.labelsrv.labels.map((selected, i) => {
@@ -122,32 +121,36 @@ export class ActivityEditComponent implements OnInit {
 
     });
 
-    this.activitysrv.addActivity(new Activity(
+
+
+
+    if (allDay =="checked"){
+      allDay = true;
+    }
+
+
+
+    var saveactivity = new Activity(
       null,
       title,
       desc,
       null,
       null,
-
       // TODO:   new Date(fromDate + " " + fromTime),
       // TODO:  new Date(toDate + " " + toTime),
       allDay,
       place,
-      incharge,
-      helpers,
       activitytype,
-      space,
-      status,
-      linked,
-      [],
-      labels,
+      1,
+      1,
       null,
-      null,
-      null,
-     // new Date(),
-     // new Date(),
-      1
-    ));
+      new Date().getTime(),
+      new Date().getTime()
+      // new Date(),
+      // new Date()
+    );
+
+    this.activitysrv.create(saveactivity).subscribe(data => saveactivity = data);
 
 
     //  this.activityForm.reset();

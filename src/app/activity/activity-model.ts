@@ -7,22 +7,16 @@ export class Activity {
   public activityid: number;
   public summary: string;
   public description: string;
-  public actvityfrom: Date;
-  public activityto: Date;
-  public isallday: boolean = false;
+  public actvityfrom: number;
+  public activityto: number;
+  public updated: number;
+  public created: number;
+  public activitytype: number;
   public place: string;
-  public person_in_charge: number;
-  public person_helper: number[];
-  public activityType: number;
+  public isallday: boolean = false;
   public space: number;
-  public status: string = 'o'; // o= open ; f = finished; a = archived; r=released (freigeben)
-  public parent_id: Activity;
-  public child_activities: Activity[];
-  public label: number[];
-  public conflicts: number[];
-  public updated: Date;
-  public created: Date;
-  public author: number;
+  public status: number = 0; // o= open ; f = finished; a = archived; r=released (freigeben)
+  public parent: number;
 
   constructor(activityid ?: number,
               summary ?: string,
@@ -31,49 +25,51 @@ export class Activity {
               activityto ?: number,
               isallday ?: boolean,
               place ?: string,
-              person_in_charge ?: number,
-              person_helper ?: number[],
-              activityType ?: number,
+              activitytype ?: number,
               space ?: number,
-              status ?: string,
-              parent_id ?: Activity,
-              child_activities ?: Activity[],
-              label ?: number[],
-              conflicts ?: number[],
+              status ?: number,
+              parent ?: number,
               updated ?: number,
-              created ?: number,
-              author ?: number) {
+              created ?: number) {
 
 
-
-    this.actvityfrom = new Date();
-    this.actvityfrom.setTime(actvityfrom);
-
-    this.activityto = new Date();
-    this.activityto.setTime(activityto);
-
-    this.updated = new Date();
-    this.updated.setTime(updated)
-
-    this.created = new Date();
-    this.created.setTime(created);
-
+    this.actvityfrom = actvityfrom;
+    this.activityto = activityto;
+    this.updated = updated;
+    this.created = created;
 
     this.activityid = activityid;
     this.summary = summary;
     this.description = description;
     this.isallday = isallday;
     this.place = place;
-    this.person_in_charge = person_in_charge;
-    this.person_helper = person_helper;
-    this.activityType = activityType;
     this.space = space;
     this.status = status;
-    this.parent_id = parent_id;
-    this.child_activities = child_activities;
-    this.label = label;
-    this.conflicts = conflicts;
-    this.author = author;
+    this.parent = parent;
+    this.activitytype = activitytype;
+  }
+
+  public updatedDate = function () {
+    var updatedDate = new Date();
+    updatedDate.setTime(this.updated);
+    return updatedDate;
+  }
+  public createdDate = function () {
+    var createdDate = new Date();
+    createdDate.setTime(this.created);
+    return createdDate;
+  }
+
+  public actvityfromDate = function () {
+    var actvityfromDate = new Date();
+    actvityfromDate.setTime(this.actvityfrom);
+    return actvityfromDate;
+  }
+
+  public actvitytoDate = function () {
+    var actvitytoDate = new Date();
+    actvitytoDate.setTime(this.activityto);
+    return actvitytoDate;
   }
 
 
@@ -88,8 +84,5 @@ export class Activity {
     } else {
       return false;
     }
-
-
   }
-
 }

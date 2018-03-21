@@ -2,6 +2,8 @@ import {Component, OnInit, Input} from "@angular/core";
 import {Activity} from "../../activity-model";
 import {PersonService} from "../../../person/person.service";
 import {Person} from "../../../person/person-model";
+import {ActivityService} from "../../activity.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-activity-item',
@@ -16,7 +18,7 @@ export class ActivityItemComponent implements OnInit {
   public personInCharge: Person;
   public helper: Person[] = [];
 
-  constructor(private personsrv: PersonService) {
+  constructor(private personsrv: PersonService, private activityService: ActivityService, private router: Router) {
   }
 
 
@@ -32,7 +34,6 @@ export class ActivityItemComponent implements OnInit {
 
   private getPerson(persId: string) {
 
-
     var resultArray: Person[] = []
     if (this.item) {
       for (const item of this.personsrv.persons) {
@@ -45,5 +46,8 @@ export class ActivityItemComponent implements OnInit {
     return resultArray;
   }
 
+  private deleteActivty() {
+    this.activityService.delete(this.item.activityid).subscribe();
+  }
 
 }

@@ -13,20 +13,35 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class ActivityService {
 
-  private readonly URL = 'https://jwplan-activity-service.herokuapp.com/activities';
-
-
+  private readonly URL = 'https://jwplan-activity-service.herokuapp.com';
+  private readonly urlActivities = this.URL + "/activities";
+  private readonly urlActivity = this.URL + "/activity";
 
   constructor(private logger: LoggingService, private http: HttpClient) {
   }
 
   public addActivity(activity: Activity) {
+
     this.logger.logStatusChange('addActivity was called');
-
   }
 
+  public create(activity:Activity):Observable<Activity>{
+    console.log(activity);
+    return this.http.post<Activity>(this.urlActivity+"/new",activity);
+  }
   public list(): Observable<Array<Activity>> {
-    return this.http.get<Array<Activity>>(this.URL);
+    return this.http.get<Array<Activity>>(this.urlActivities);
   }
+
+  public find(id: number): Observable<Activity> {
+    return this.http.get<Activity>(this.urlActivity + "/" + id);
+  }
+
+  public delete(id: number): Observable<any> {
+    const url = this.urlActivity + "/" + id;
+    return this.http.delete(url);
+
+  }
+
 
 }
