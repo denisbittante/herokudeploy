@@ -5,12 +5,12 @@
           <div class="col-md-auto">
              <a routerLink="/activity/detail/{{item.activityid}}">{{item.summary}}</a>
           </div>
-          <div class="col col-lg-3">
+          <div class="col col-md-3">
             <span class="glyphicon glyphicon-time"></span>
             {{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
           </div>
 
-          <div class="col col-lg-2 ">
+          <div class="col col-md-2 ">
 
             <div class="btn-group" appDropdown>
               <a
