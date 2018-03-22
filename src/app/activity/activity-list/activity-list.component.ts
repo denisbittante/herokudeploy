@@ -24,4 +24,9 @@ export class ActivityListComponent implements OnInit {
     console.log(this.activitylist);
   }
 
+  
+  refresh(){
+      this.activityService.list().subscribe(data => this.activitylist = data);
+  
+  }
 }
