@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 export class ActivityItemComponent implements OnInit {
 
   @Input() item: Activity;
-
+  @Output() onRefresh:EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public personInCharge: Person;
   public helper: Person[] = [];
@@ -47,7 +47,7 @@ export class ActivityItemComponent implements OnInit {
   }
 
   public deleteActivty() {
-    this.activityService.delete(this.item.activityid).subscribe();
+    this.activityService.delete(this.item.activityid).subscribe(data => this.onRefresh.emit(true)  );
   }
 
 }
