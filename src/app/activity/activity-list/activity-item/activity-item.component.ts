@@ -4,6 +4,7 @@ import {PersonService} from "../../../person/person.service";
 import {Person} from "../../../person/person-model";
 import {ActivityService} from "../../activity.service";
 import {Router} from "@angular/router";
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-activity-item',
