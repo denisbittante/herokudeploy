@@ -20,7 +20,7 @@
     </div>
 
 
-    <app-activity-item *ngFor="let item of activitylist" [item]="item "></app-activity-item>
+    <app-activity-item *ngFor="let item of activitylist" [item]="item " (onRefresh)="refresh()"></app-activity-item>
 
     <!-- TODO: nachschauen ob der User einen Space besitzt-->
     <div class="jumbotron">
