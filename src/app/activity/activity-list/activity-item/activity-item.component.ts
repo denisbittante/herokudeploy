@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, Output} from "@angular/core";
 import {Activity} from "../../activity-model";
 import {PersonService} from "../../../person/person.service";
 import {Person} from "../../../person/person-model";
