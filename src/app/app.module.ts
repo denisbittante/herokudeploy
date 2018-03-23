@@ -26,6 +26,11 @@ import {CalendarEditComponent} from "./calendar/calendar-edit/calendar-edit.comp
 import {CalendarDetailComponent} from "./calendar/calendar-detail/calendar-detail.component";
 import {LabelService} from "./activity/label.service";
 import {HttpClientModule} from '@angular/common/http';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 const appRoutes: Routes = [
@@ -63,7 +68,14 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule,
+    FlexLayoutModule
+
   ],
   providers: [
     ActivityService,

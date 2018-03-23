@@ -1,0 +1,8 @@
+.example-header-image {
+  background-color:blue;
+  background-size: cover;
+}
+
+.activity-item-card{
+  min-width: 300px;
+}
