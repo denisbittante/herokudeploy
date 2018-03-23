@@ -33,7 +33,7 @@ import {MatListModule} from '@angular/material/list';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {path: '', component: ActivityListComponent},
@@ -81,7 +81,8 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ActivityService,
