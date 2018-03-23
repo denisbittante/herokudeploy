@@ -71,7 +71,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
