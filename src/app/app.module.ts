@@ -31,6 +31,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import {MatIconModule} from '@angular/material/icon';
 
 
 const appRoutes: Routes = [
@@ -74,8 +75,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatGridListModule,
     MatListModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatIconModule
   ],
   providers: [
     ActivityService,
