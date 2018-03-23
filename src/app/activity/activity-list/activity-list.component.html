@@ -5,7 +5,7 @@
   </mat-toolbar>
 
 
-<div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="10px"
+<div fxLayout="column" fxFlex fxLayoutAlign="space-around stretch" fxLayoutGap="10px"
        fxLayoutGap.xs="2px">
       <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
