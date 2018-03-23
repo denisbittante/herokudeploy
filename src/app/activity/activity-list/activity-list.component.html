@@ -1,8 +1,13 @@
-<mat-card>     <input type="text" class="form-control " aria-describedby="sizing-addon2" placeholder="Search"> </mat-card>
+<mat-card>     
+  <input type="text" class="form-control " aria-describedby="sizing-addon2" placeholder="Search"> 
+</mat-card>
 
-        <div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="10px"
-             fxLayoutGap.xs="2px">
-          <app-activity-item *ngFor="let item of activitylist" [item]="item "
-                             (onRefresh)="refresh()"></app-activity-item>
-        </div>
+<div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="10px"
+       fxLayoutGap.xs="2px">
+      <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
+<span class="done">
+  <button mat-fab>
+    <mat-icon>add circle</mat-icon>
+  </button>
+</span>
