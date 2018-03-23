@@ -30,10 +30,11 @@ import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule} fro
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import {FlexLayoutModule } from "@angular/flex-layout";
 import {MatIconModule} from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   {path: '', component: ActivityListComponent},
