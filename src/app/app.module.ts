@@ -26,7 +26,7 @@ import {CalendarEditComponent} from "./calendar/calendar-edit/calendar-edit.comp
 import {CalendarDetailComponent} from "./calendar/calendar-detail/calendar-detail.component";
 import {LabelService} from "./activity/label.service";
 import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCheckboxModule, MatMenuModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
@@ -77,7 +77,8 @@ const appRoutes: Routes = [
     MatListModule,
     FlexLayoutModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [
     ActivityService,
