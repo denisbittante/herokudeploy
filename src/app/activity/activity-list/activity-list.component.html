@@ -1,17 +1,10 @@
-<div fxLayout="column" fxFlex fxLayoutAlign="space-between stretch" fxLayoutGap="10px"
-       fxLayoutGap.xs="2px">
+<mat-form-field class="search-form">
+  <input matInput placeholder="Search" type="text">
+</mat-form-field>
+<button button="submit" mat-raised-button color="primary">Search</button>
+<br>
 
-<mat-toolbar>    <span class="example-spacer">
-  </span>
-
-     <mat-form-field>
-    <input matInput placeholder="Search">
-  </mat-form-field>
-  </mat-toolbar>
-
-
-<div fxLayout="column" fxFlex fxLayoutAlign="space-around stretch" fxLayoutGap="10px"
-       fxLayoutGap.xs="2px">
+<div fxLayout="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="space-around stretch">
       <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
 <span class="done">
