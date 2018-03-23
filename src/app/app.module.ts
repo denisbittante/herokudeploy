@@ -30,7 +30,6 @@ import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule} fro
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
-import {FlexLayoutModule } from "@angular/flex-layout";
 import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
@@ -71,7 +70,6 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    FlexLayoutModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
