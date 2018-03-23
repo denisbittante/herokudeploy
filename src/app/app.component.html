@@ -3,7 +3,7 @@
   <mat-toolbar color="primary">
     <span><mat-icon>mood</mat-icon></span>
 
-    <span>Yay, Material in Angular 2!</span>
+    <span routerLink="/">jwplaning</span>
 
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
@@ -14,109 +14,14 @@
     <button mat-menu-item>Option 2</button>
   </mat-menu>
 
-  <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
-  </mat-card>
+  <router-outlet></router-outlet>
 
   <span class="done">
     <button mat-fab>
-      <mat-icon>check circle</mat-icon>
+      <mat-icon>add circle</mat-icon>
     </button>
   </span>
-</div>
 
+ 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" routerLink="/">jwplaning</a>
-          </div>
-          <ul class="nav navbar-nav">
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-
-            <li class="dropdown" appDropdown>
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false"><span class="glyphicon glyphicon-th"></span></a>
-              <div class=" dropdown-menu mydropdown ">
-                <div class="row">
-                  <div class="col-xs-4 text-center ">
-                    <a routerLink="/activities"><span class="glyphicon glyphicon-list btn-lg "></span><br>Programme</a>
-                  </div>
-                  <div class="col-xs-4 text-center ">
-                    <a routerLink="/calendar"><span class="glyphicon glyphicon-calendar btn-lg"></span><br>Kalender</a>
-                  </div>
-                  <div class="col-xs-4 text-center ">
-                    <a routerLink="/persons"><span class="glyphicon glyphicon-user btn-lg"></span><br>Personen</a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 text-center ">
-                    <a routerLink="/activities"><span class="glyphicon glyphicon-stats btn-lg"></span><br>Statistik</a>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-xs-4 text-center " *ngFor="let space of spaces">
-                    <a routerLink="/space/{{space.id}}"><span class="glyphicon glyphicon-record btn-lg"></span><br>{{space.name}}</a>
-                  </div>
-                  <div class="col-xs-4 text-center ">
-                    <a routerLink="/space/add"><span class="glyphicon glyphicon-plus btn-lg"></span><br>Neu</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-
-            <li class="dropdown" appDropdown>
-
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false"><span class="glyphicon glyphicon-bell"></span><span
-                class="badge btn-danger "> 2</span> </a>
-
-              <div class=" dropdown-menu  ">
-                <div class="row">
-
-                  <div class="col-xs-12 text-center mydropdown ">
-                    <a routerLink="/"><span class="glyphicon glyphicon-warning-sign "></span>
-                      Something to diplay as information</a>
-
-                    <div class="pull-right">
-                      <a><span class="glyphicon glyphicon-remove"></span></a>
-                    </div>
-                  </div>
-
-                  <hr>
-                  <div class="col-xs-12 text-center mydropdown ">
-                    <a routerLink="/"><span class="glyphicon glyphicon-warning-sign "></span>
-                      Something to diplay as information</a>
-
-                    <div class="pull-right">
-                      <a><span class="glyphicon glyphicon-remove"></span></a>
-                    </div>
-                  </div>
-
-
-                </div>
-
-              </div>
-
-            </li>
-
-            <li><a routerLinkActive="active" routerLink="/user"><span class="glyphicon glyphicon-user"></span> Max
-              Muster</a></li>
-          </ul>
-        </div>
-      </nav>
-
-    </div>
-  </div>
-  <router-outlet></router-outlet>
 </div>
