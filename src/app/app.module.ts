@@ -32,6 +32,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ActivityService,
