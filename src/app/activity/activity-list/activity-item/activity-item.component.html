@@ -2,7 +2,7 @@
 <mat-card class="activity-item-card" >
     <mat-card-header>
       <mat-card-title><span class="mat-display-1">{{item.summary}}</span></mat-card-title>
-      <mat-card-subtitle>{{item.actvityfrom | date: "dd.MM.yy HH:mm"}} - {{item.activityto| date:"dd.MM.yy HH:mm"}}
+      <mat-card-subtitle>{{item.actvityfrom | date:'fullDate'}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
