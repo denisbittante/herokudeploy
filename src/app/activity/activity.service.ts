@@ -37,6 +37,10 @@ export class ActivityService {
     return this.http.get<Activity>(this.urlActivity + "/" + id);
   }
 
+  public update(activity:Activity): Observable<Activity> {
+    return this.http.put<Activity>(this.urlActivity, activity );
+  }
+
   public delete(id: number): Observable<any> {
     const url = this.urlActivity + "/" + id;
     return this.http.delete(url);

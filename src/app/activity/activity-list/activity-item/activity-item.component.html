@@ -10,8 +10,9 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-button [routerLink]="['/activity','detail',item.activityid]">SHOW</a>
-      <a mat-button (click)="deleteActivty()">DELETE</a>
+      <button mat-button [routerLink]="['/activity','detail',item.activityid]">SHOW</button>
+      <button mat-button [routerLink]="['/activity','edit',item.activityid]">EDIT</button>
+      <button mat-button  mat-button (click)="deleteActivty()">DELETE</button>
     </mat-card-actions>
 
   </mat-card>

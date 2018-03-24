@@ -6,10 +6,15 @@
     </button>
 
     <span class="example-spacer"></span>
-    <button type="submit"
+    <button *ngIf="!editing" type="submit"
+            class="btn btn-success"
+            [disabled]="!activityForm.valid">Erstellen
+    </button>
+    <button *ngIf="editing" type="submit"
             class="btn btn-success"
             [disabled]="!activityForm.valid">Speichern
     </button>
+
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item (click)="deleteActivty()" class="btn btn-danger">Löschen</button>
@@ -147,40 +152,6 @@
     </div>
 
 
-    <label class="control-label col-sm-2">Labels</label>
-    <div class="col-sm-10">
-      <div class="panel panel-default input-group">
-        <div class="panel-body ">
 
-          <div formArrayName="labels">
-
-            <span *ngFor="let labelControl of getLabels.controls; let i = index">
-              <span class="label label-primary" style="display:inline-block">
-                  <span class="glyphicon glyphicon-trash" (click)="deleteLabel(i)"></span> {{labelsrv.labels[i].name}}
-              </span>
-            </span>
-          </div>
-
-        </div>
-        <span class="input-group-addon" (click)="toggleSearchField('labels')"><span
-          class="glyphicon glyphicon-search"></span> </span>
-      </div>
-
-
-    </div>
-
-    <div [hidden]="!activityForm.get('sf_labels').value" class="col-sm-10">
-
-      <div class="panel panel-default">
-        Suggestions
-        <div *ngFor="let label of getLabels.controls; let i=index">
-
-          <input type="checkbox" [formControl]="label"/> {{labelsrv.labels[i].name}}
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
+</div>
 </form>

@@ -12,7 +12,7 @@
       <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
 <span class="done">
-  <button mat-fab [routerLink]="['/activity','edit']" >
+  <button mat-fab [routerLink]="['/activity','new']" >
     <mat-icon>add circle</mat-icon>
   </button>
 </span>

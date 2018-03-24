@@ -1,10 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router, Params} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ActivityService} from "../../activity.service";
 import {Activity} from "../../activity-model";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {PersonService} from "../../../person/person.service";
-import {Person} from "../../../person/person-model";
 import {ActivityTypeService} from "../../activity-type.service";
 import {LabelService} from "../../label.service";
 
@@ -16,9 +15,8 @@ import {LabelService} from "../../label.service";
 export class ActivityEditComponent implements OnInit {
 
   activityForm: FormGroup;
-  persons: Person[] = [];
   editing: boolean;
-  id: number;
+  id: number = null;
   activity: Activity;
 
   constructor(private router: Router,
@@ -29,7 +27,7 @@ export class ActivityEditComponent implements OnInit {
               private labelsrv: LabelService) {
 
     this.activityForm = new FormGroup({
-      'title': new FormControl('Beispiel22', Validators.required),
+      'title': new FormControl(null),
       'fromDate': new FormControl(null),
       'fromTime': new FormControl(null),
       'toDate': new FormControl(null),
@@ -37,13 +35,10 @@ export class ActivityEditComponent implements OnInit {
       'allDay': new FormControl('checked'),
       'desc': new FormControl(null),
       'place': new FormControl(null),
-      'incharge': new FormControl(null),
-      'helpers': this.buildHelper(personsrv),
       'activitytype': new FormControl(null),
       'space': new FormControl(null),
       'status': new FormControl(null),
       'linked': new FormControl(null),
-      'labels': this.buildLabels(labelsrv),
       'sf_incharge': new FormControl(false),
       'sf_helper': new FormControl(false),
       'sf_space': new FormControl(false),
@@ -54,55 +49,41 @@ export class ActivityEditComponent implements OnInit {
   }
 
 
-  buildLabels(labelsrv: LabelService) {
-    const arr = labelsrv.labels.map(label => {
-      return new FormControl(label.selected);
-    });
-    return new FormArray(arr);
-  }
+  // ACTIONS
 
-  buildHelper(personsrv: PersonService) {
-
-    const arr = personsrv.persons.map(person => {
-      return new FormControl(person.callname);
-    })
-    return new FormArray(arr);
-
-  }
-
-  ngOnInit() {
-
-    this.id = this.route.snapshot.params['id'];
-    this.persons = this.personsrv.persons;
-
-
-    if (this.id > 0) {
-      this.editing = true;
-      this.activitysrv.find(this.id).subscribe(data => this.activity = data);
-
-    } else {
-      this.editing = false;
-    }
-
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.activitysrv.find(params['id']).subscribe(data => this.activity = data);
-        }
-      )
+  public  update() {
+    this.saveFormToModel();
+    this.activitysrv.update(this.activity).subscribe(data => this.router.navigate(['activities']));
   }
 
   public deleteActivty() {
-    this.activitysrv.delete(this.activity.activityid).subscribe(data =>  this.router.navigate(['activities'])  );
+    this.activitysrv.delete(this.activity.activityid).subscribe(data => this.router.navigate(['activities']));
   }
 
-  cancel() {
+  public cancel() {
     this.router.navigate(['activities']);
   }
 
   onSubmit() {
-    console.log(this.activityForm);
+    this.saveFormToModel();
+    this.activitysrv.create(this.activity).subscribe(data => this.activity = data);
+    //  this.activityForm.reset();
+  }
 
+
+  ngOnInit() {
+
+    this.id = this.route.snapshot.params['id'];
+    if (this.id > 0) {
+      this.editing = true;
+      this.activitysrv.find(this.id).subscribe(data => this.modelToForm(data));
+
+    } else {
+      this.editing = false;
+    }
+  }
+
+  saveFormToModel() {
     var title = this.activityForm.get('title').value;
     var fromDate = this.activityForm.get('fromDate').value;
     var fromTime = this.activityForm.get('fromTime').value;
@@ -111,31 +92,17 @@ export class ActivityEditComponent implements OnInit {
     var allDay = this.activityForm.get('allDay').value;
     var desc = this.activityForm.get('desc').value;
     var place = this.activityForm.get('place').value;
-    var incharge = this.activityForm.get('incharge').value;
-    var helpers = this.activityForm.get('helpers').value;
     var activitytype = this.activityForm.get('activitytype').value;
     var space = this.activityForm.get('space').value;
     var status = this.activityForm.get('status').value;
     var parent = this.activityForm.get('linked').value;
-    //var labels = this.activityForm.get('labels').value;
 
-    var labels = this.labelsrv.labels.map((selected, i) => {
-      return this.labelsrv.labels[i].id;
-
-
-    });
-
-
-
-
-    if (allDay =="checked"){
+    if (allDay == "checked") {
       allDay = true;
     }
 
-
-
     var saveactivity = new Activity(
-      null,
+      this.id,
       title,
       desc,
       null,
@@ -150,43 +117,19 @@ export class ActivityEditComponent implements OnInit {
       null,
       new Date().getTime(),
       new Date().getTime()
-      // new Date(),
-      // new Date()
     );
-
-    this.activitysrv.create(saveactivity).subscribe(data => saveactivity = data);
-
-
-    //  this.activityForm.reset();
-  }
-
-  get getLabels() {
-    return <FormArray> this.activityForm.get('labels');
-  }
-
-  get getHelpers() {
-    return <FormArray> this.activityForm.get('helpers');
+    this.activity = saveactivity;
 
   }
 
-  deleteLabel(index: number) {
-    console.log("To delete Index : " + index);
-    (<FormArray>this.activityForm.get('labels')).removeAt(index);
-  }
+  modelToForm(data: Activity) {
+    this.activity = data;
 
-  deletePerson(index: number) {
-    console.log("To delete Index : " + index);
-    (<FormArray>this.activityForm.get('helpers')).removeAt(index);
-  }
+    this.activityForm.get('title').setValue(data.summary);
+    this.activityForm.get('desc').setValue(data.description);
+    this.activityForm.get('place').setValue(data.place);
+    this.activityForm.get('space').setValue(data.space);
 
-
-  toggleSearchField(field: string) {
-    console.log(field);
-
-    let show = this.activityForm.get('sf_' + field).value;
-
-    console.log(show);
-    this.activityForm.get('sf_' + field).setValue(!show);
 
   }
 
