@@ -1,5 +1,5 @@
 
-<mat-toolbar>  
+<mat-toolbar>
   <br>
   <span class="example-spacer"></span>
   <mat-form-field>
@@ -12,8 +12,8 @@
       <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
 <span class="done">
-  <button mat-fab>
+  <button mat-fab [routerLink]="['/activity','edit']" >
     <mat-icon>add circle</mat-icon>
   </button>
 </span>
-</div>
+

@@ -92,6 +92,10 @@ export class ActivityEditComponent implements OnInit {
       )
   }
 
+  public deleteActivty() {
+    this.activitysrv.delete(this.activity.activityid).subscribe(data =>  this.router.navigate(['activities'])  );
+  }
+
   cancel() {
     this.router.navigate(['activities']);
   }

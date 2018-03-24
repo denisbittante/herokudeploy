@@ -10,7 +10,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-button routerLink="/activity/detail/{{item.activityid}}">SHOW</a>
+      <a mat-button [routerLink]="['/activity','detail',item.activityid]">SHOW</a>
       <a mat-button (click)="deleteActivty()">DELETE</a>
     </mat-card-actions>
 
