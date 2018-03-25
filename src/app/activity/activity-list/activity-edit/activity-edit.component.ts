@@ -54,6 +54,8 @@ export class ActivityEditComponent implements OnInit {
   public  update() {
     this.saveFormToModel();
     this.activitysrv.update(this.activity).subscribe(data => this.router.navigate(['activities']));
+    this.routeToMainpage();
+
   }
 
   public deleteActivty() {
@@ -61,15 +63,17 @@ export class ActivityEditComponent implements OnInit {
   }
 
   public cancel() {
-    this.router.navigate(['activities']);
+    this.routeToMainpage();
   }
-
   onSubmit() {
     this.saveFormToModel();
     this.activitysrv.create(this.activity).subscribe(data => this.activity = data);
-    //  this.activityForm.reset();
+    this.routeToMainpage();
   }
 
+  routeToMainpage(){
+    this.router.navigate(['activities']);
+  }
 
   ngOnInit() {
 
