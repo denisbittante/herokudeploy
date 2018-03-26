@@ -8,9 +8,19 @@
 </mat-toolbar>
 <br>
 
+<div [fxLayout]="column">
+  <div fxFlex.lt-md="10%" fxFlex.md-xs="33%" >
+  </div>
+  <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
 <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch">
       <app-activity-item *ngFor="let item of activitylist" [item]="item "(onRefresh)="refresh()"></app-activity-item>
 </div>
+
+  </div>
+  <div fxFlex></div>
+
+
 <span class="done">
   <button mat-fab [routerLink]="['/activity','new']" >
     <mat-icon>add circle</mat-icon>
