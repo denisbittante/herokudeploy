@@ -49,27 +49,30 @@ export class Activity {
     this.activitytype = activitytype;
   }
 
-  public updatedDate = function () {
-    var updatedDate = new Date();
-    updatedDate.setTime(this.updated);
-    return updatedDate;
-  }
-  public createdDate = function () {
-    var createdDate = new Date();
-    createdDate.setTime(this.created);
-    return createdDate;
-  }
-
-  public actvityfromDate = function () {
-    var actvityfromDate = new Date();
-    actvityfromDate.setTime(this.actvityfrom);
-    return actvityfromDate;
+  public static toDate(str: number): Date {
+    if (str != null) {
+      if (str > 0) {
+        var newDate = new Date();
+        newDate.setTime(str);
+        newDate.setHours(0, 0, 0, 0)
+        return newDate;
+      }
+    }
+    return null;
   }
 
-  public actvitytoDate = function () {
-    var actvitytoDate = new Date();
-    actvitytoDate.setTime(this.activityto);
-    return actvitytoDate;
+  public static toTime(str: number): String {
+    if (str != null) {
+      if (str > 0) {
+
+        var newDate = new Date();
+        newDate.setTime(str);
+        var hours = newDate.getHours() < 10 ? "0" + newDate.getHours() : newDate.getHours();
+        var minutes = newDate.getMinutes() < 10 ? "0" + newDate.getMinutes() : newDate.getMinutes();
+        return hours + ":" + minutes;
+      }
+    }
+    return null;
   }
 
 

@@ -18,6 +18,7 @@ export class ActivityEditComponent implements OnInit {
   editing: boolean;
   id: number = null;
   activity: Activity;
+  _allDay: boolean = true;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -32,18 +33,19 @@ export class ActivityEditComponent implements OnInit {
       'fromTime': new FormControl(null),
       'toDate': new FormControl(null),
       'toTime': new FormControl(null),
-      'allDay': new FormControl('checked'),
       'desc': new FormControl(null),
       'place': new FormControl(null),
       'activitytype': new FormControl(null),
       'space': new FormControl(null),
+      'parent': new FormControl(null),
       'status': new FormControl(null),
       'linked': new FormControl(null),
       'sf_incharge': new FormControl(false),
       'sf_helper': new FormControl(false),
       'sf_space': new FormControl(false),
       'sf_linked': new FormControl(false),
-      'sf_labels': new FormControl(false)
+      'sf_labels': new FormControl(false),
+      'allDay': new FormControl(null)
     });
 
   }
@@ -65,13 +67,14 @@ export class ActivityEditComponent implements OnInit {
   public cancel() {
     this.routeToMainpage();
   }
-  onSubmit() {
+
+  public create() {
     this.saveFormToModel();
     this.activitysrv.create(this.activity).subscribe(data => this.activity = data);
     this.routeToMainpage();
   }
 
-  routeToMainpage(){
+  routeToMainpage() {
     this.router.navigate(['activities']);
   }
 
@@ -88,54 +91,102 @@ export class ActivityEditComponent implements OnInit {
   }
 
   saveFormToModel() {
+
+
     var title = this.activityForm.get('title').value;
     var fromDate = this.activityForm.get('fromDate').value;
     var fromTime = this.activityForm.get('fromTime').value;
     var toDate = this.activityForm.get('toDate').value;
     var toTime = this.activityForm.get('toTime').value;
-    var allDay = this.activityForm.get('allDay').value;
     var desc = this.activityForm.get('desc').value;
     var place = this.activityForm.get('place').value;
     var activitytype = this.activityForm.get('activitytype').value;
     var space = this.activityForm.get('space').value;
     var status = this.activityForm.get('status').value;
-    var parent = this.activityForm.get('linked').value;
+    var parent = this.activityForm.get('parent').value;
+    var allDay = this.activityForm.get('allDay').value;
+    console.log(allDay);
 
-    if (allDay == "checked") {
-      allDay = true;
-    }
+
+    console.log("time : " + fromTime);
+    console.log("from_date: " + fromDate)
+
+    toDate = this.formToNumber(toDate, toTime);
+    fromDate = this.formToNumber(fromDate, fromTime);
+
 
     var saveactivity = new Activity(
       this.id,
       title,
       desc,
-      null,
-      null,
+      fromDate,
+      toDate,
       // TODO:   new Date(fromDate + " " + fromTime),
       // TODO:  new Date(toDate + " " + toTime),
       allDay,
       place,
       activitytype,
-      1,
-      1,
-      null,
+      space,
+      status,
+      parent,
       new Date().getTime(),
-      new Date().getTime()
+      this.editing == false ? new Date().getTime() : this.activity.created
     );
     this.activity = saveactivity;
 
   }
 
+  private formToNumber(date: any, time: any) {
+    if (date != null) {
+
+      date = new Date(date).getTime();
+
+      if (time != null) {
+        if (!this._allDay) {
+          var array = time.split(':');
+          date += array[0] * 60 * 60 * 1000;
+          date += array[1] * 60 * 1000;
+        }
+      }
+    }
+
+    return date;
+  }
+
+  public
+  toggleValue() {
+    if (this._allDay) {
+
+      this._allDay = false;
+    } else {
+
+      this._allDay = true;
+    }
+    console.log("this.allDay =" + this._allDay);
+
+
+  }
+
+
   modelToForm(data: Activity) {
+
     this.activity = data;
 
     this.activityForm.get('title').setValue(data.summary);
     this.activityForm.get('desc').setValue(data.description);
     this.activityForm.get('place').setValue(data.place);
     this.activityForm.get('space').setValue(data.space);
+    this.activityForm.get('activitytype').setValue(data.activitytype);
+    this.activityForm.get('status').setValue(data.status);
+    this.activityForm.get('parent').setValue(data.parent);
+    this.activityForm.get('allDay').setValue(data.isallday);
+    this._allDay = data.isallday;
+    this.activityForm.get('toDate').setValue(Activity.toDate(data.activityto));
+    this.activityForm.get('toTime').setValue(Activity.toTime(data.activityto));
+    this.activityForm.get('fromDate').setValue(Activity.toDate(data.actvityfrom));
+    this.activityForm.get('fromTime').setValue(Activity.toTime(data.actvityfrom));
 
 
   }
-
 
 }

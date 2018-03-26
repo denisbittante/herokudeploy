@@ -12,7 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FlexLayoutModule } from "@angular/flex-layout";
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AppComponent} from "./app.component";
 import {CalendarListComponent} from "./calendar/calendar-list/calendar-list.component";
@@ -70,6 +70,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes,{ useHash: true }),

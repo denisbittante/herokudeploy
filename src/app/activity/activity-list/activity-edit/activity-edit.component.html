@@ -2,19 +2,19 @@
 
   <mat-toolbar>
 
-    <button mat-button (click)="cancel()">
-      <mat-icon>cancel</mat-icon>
+    <button mat-button type="button" (click)="cancel()">
+      <mat-icon>close</mat-icon>
     </button>
     <span class="example-spacer"></span>
 
-    <button mat-button *ngIf="!editing" (click)="update()"
+    <button mat-button type="button" *ngIf="editing" (click)="update()"
             [disabled]="!activityForm.valid">
       <mat-icon>done</mat-icon>
     </button>
-    <button mat-raised-button color="primary" *ngIf="editing" (click)="onSubmit()"
+    <button mat-raised-button type="button" color="primary" *ngIf="!editing" (click)="create()"
             [disabled]="!activityForm.valid"> Save
     </button>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <button mat-icon-button type="button" [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </mat-toolbar>
@@ -26,75 +26,77 @@
   </mat-menu>
 
 
-  <div mat-dialog-content >
+  <div [fxLayout]="column">
+    <div fxFlex.lt-md="10%" fxFlex.md-xs="33%" class="one">
 
-    <mat-grid-list cols="2" rowHeight="50px" align="left">
+    </div>
+    <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-      <mat-grid-tile colspan="2"  >
-
-        <mat-form-field >
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field fxFlex>
           <input matInput type="text"
                  formControlName="title" placeholder="Summary">
         </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+          <mat-form-field>
+            <input matInput formControlName="fromDate" [matDatepicker]="picker1" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="!_allDay">
+            <input matInput type="time"
+                   formControlName="fromTime">
+          </mat-form-field>
+
+        </div>
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
 
-      </mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="toDate" [matDatepicker]="picker2" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
 
-      <mat-grid-tile colspan="2">
-        <mat-form-field>
-          <input matInput formControlName="fromDate" placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field *ngIf="!_allDay">
+            <input type="time" matInput
+                   formControlName="toTime">
+          </mat-form-field>
+        </div>
+        <div>
+        </div>
 
+      </div>
+      <div>
+        <mat-checkbox formControlName="allDay" (click)="toggleValue()"> All day</mat-checkbox>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <br>
+          <mat-divider fxFlex></mat-divider>
+          <br>
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>place</mat-icon>
+          <mat-form-field fxFlex>
+            <input matInput
+                   type="number"
+                   placeholder="Typ"
+                   formControlName="activitytype">
+          </mat-form-field>
+        </div>
+      </div>
 
-        <mat-form-field>
-          <input matInput type="time"
-                 formControlName="fromTime"
-          >
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
 
-        <mat-form-field>
-          <input type="time" matInput
-                 formControlName="toTime">
-        </mat-form-field>
-
-
-        <mat-form-field>
-          <input matInput formControlName="toDate" placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-      </mat-grid-tile>
-      <mat-grid-tile colspan ="2">
-        <mat-checkbox formControlName="allDay"> All day</mat-checkbox>
-      </mat-grid-tile>
-      <mat-grid-tile>
-
-        <mat-form-field>
-          <input matInput
-                 type="text"
-                 placeholder="Typ"
-                 formControlName="activitytype"
-          >
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-
-        <mat-form-field>
-      <textarea matInput
-                matTextareaAutosize matAutosizeMinRows="2"
-                matAutosizeMaxRows="5"
-                placeholder="Add description"
-                formControlName="desc"></textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-icon>place</mat-icon>
-        <mat-form-field>
+          <mat-icon>place</mat-icon>
+          <mat-form-field fxFlex>
 
       <textarea matInput
                 matTextareaAutosize matAutosizeMinRows="2"
@@ -103,40 +105,63 @@
                 formControlName="place">
 
       </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>link</mat-icon>
+          <mat-form-field fxFlex>
 
-        <mat-form-field>
-          <input matInput
-                 type="text"
-                 placeholder="Space"
-                 formControlName="space"
-          >
-        </mat-form-field>
-      </mat-grid-tile>
+            <input matInput
+                   type="text"
+                   placeholder="Space"
+                   formControlName="space"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>link</mat-icon>
+          <mat-form-field fxFlex>
+            <input type="text" matInput
+                   formControlName="status"
+                   placeholder="Status"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>link</mat-icon>
 
-      <mat-grid-tile>
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              type="text"
+              placeholder="Abhängig zu"
+              formControlName="parent"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-        <mat-form-field>
-          <input type="text" matInput
-                 formControlName="status"
-                 placeholder="Status"
-          >
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>subject</mat-icon>
 
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            placeholder="Abhängig zu"
-            formControlName="linked"
-          >
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
+          <mat-form-field fxFlex>
+      <textarea matInput
+                matTextareaAutosize matAutosizeMinRows="2"
+                matAutosizeMaxRows="10"
+                placeholder="Add description"
+                formControlName="desc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div fxFlex.lt-md="10%" fxFlex.md-xs="33%"></div>
+
   </div>
-
 </form>
