@@ -48,6 +48,7 @@ const appRoutes: Routes = [
   {path: 'calendar', component: CalendarListComponent},
   {path: 'calendar/detail/:id', component: CalendarDetailComponent},
   {path: 'calendar/edit/:id', component: CalendarEditComponent},
+  {path: '**', redirectTo: '/activities', pathMatch: 'full' }
 ];
 
 @NgModule({
