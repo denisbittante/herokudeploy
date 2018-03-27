@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Activity} from "../activity-model";
 import {ActivityService} from "../activity.service";
+import {FlexLayoutModule } from "@angular/flex-layout";
 
 @Component({
   selector: 'app-activity-list',
@@ -24,9 +25,9 @@ export class ActivityListComponent implements OnInit {
     console.log(this.activitylist);
   }
 
-  
+
   refresh(){
       this.activityService.list().subscribe(data => this.activitylist = data);
-  
+
   }
 }

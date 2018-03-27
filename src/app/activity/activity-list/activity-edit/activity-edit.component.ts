@@ -6,6 +6,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {PersonService} from "../../../person/person.service";
 import {ActivityTypeService} from "../../activity-type.service";
 import {LabelService} from "../../label.service";
+import {FlexLayoutModule } from "@angular/flex-layout";
 
 @Component({
   selector: 'app-activity-edit',
