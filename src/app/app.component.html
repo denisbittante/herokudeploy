@@ -1,7 +1,7 @@
 
 <div>
   <mat-toolbar color="primary">
-    <span><mat-icon>mood</mat-icon></span>
+    <span><mat-icon>donut_small</mat-icon></span>
     <span class="example-spacer"></span>
 
     <span routerLink="/">JW Planning</span>
@@ -10,10 +10,17 @@
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>apps</mat-icon>
     </button>
+    <button mat-icon-button [mat-menu-trigger-for]="menu-account">
+      <mat-icon>account_circle</mat-icon>
+    </button>
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item>Option 1</button>
     <button mat-menu-item>Option 2</button>
+  </mat-menu>
+  <mat-menu x-position="before" #menu-account="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Account</button>
   </mat-menu>
 
   <router-outlet></router-outlet>
