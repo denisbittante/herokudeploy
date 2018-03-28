@@ -10,7 +10,7 @@
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>apps</mat-icon>
     </button>
-    <button mat-icon-button [mat-menu-trigger-for]="menu-account">
+    <button mat-icon-button [mat-menu-trigger-for]="menu_account">
       <mat-icon>account_circle</mat-icon>
     </button>
   </mat-toolbar>
@@ -18,7 +18,7 @@
     <button mat-menu-item>Option 1</button>
     <button mat-menu-item>Option 2</button>
   </mat-menu>
-  <mat-menu x-position="before" #menu-account="matMenu">
+  <mat-menu x-position="before" #menu_account="matMenu">
     <button mat-menu-item>Settings</button>
     <button mat-menu-item>Account</button>
   </mat-menu>
