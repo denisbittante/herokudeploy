@@ -47,7 +47,6 @@ export class PersonEditComponent implements OnInit {
   public  update() {
     this.saveFormToModel();
     this.personsrv.update(this.person).subscribe(data => this.router.navigate([this.mainpage]));
-    this.routeToMainpage();
   }
 
   public deletePerson() {

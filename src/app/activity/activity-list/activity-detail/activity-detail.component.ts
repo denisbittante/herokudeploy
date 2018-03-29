@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ActivityService} from "../../activity.service";
 import {Activity} from "../../activity-model";
 
@@ -13,7 +13,9 @@ export class ActivityDetailComponent implements OnInit {
   public item: Activity;
   private id;
 
-  constructor(private activityService: ActivityService, private route: ActivatedRoute) {
+  constructor(private activityService: ActivityService,
+              private router: Router,
+              private route: ActivatedRoute) {
 
     this.route.params.subscribe(params => {
       if (params['id']) {
@@ -27,7 +29,7 @@ export class ActivityDetailComponent implements OnInit {
   }
 
   public deleteActivty() {
-    this.activityService.delete(this.item.activityid).subscribe(data => this.route.navigate(['activities']));
+    this.activityService.delete(this.item.activityid).subscribe(data => this.router.navigate(['activities']));
   }
 
 }
