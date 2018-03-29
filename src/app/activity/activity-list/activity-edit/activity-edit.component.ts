@@ -6,7 +6,6 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {PersonService} from "../../../person/person.service";
 import {ActivityTypeService} from "../../activity-type.service";
 import {LabelService} from "../../label.service";
-import {FlexLayoutModule } from "@angular/flex-layout";
 
 @Component({
   selector: 'app-activity-edit',
@@ -19,7 +18,7 @@ export class ActivityEditComponent implements OnInit {
   editing: boolean;
   id: number = null;
   activity: Activity;
-  _allDay: boolean = true;
+  _allDay: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -50,8 +49,6 @@ export class ActivityEditComponent implements OnInit {
     });
 
   }
-
-
   // ACTIONS
 
   public  update() {
@@ -92,8 +89,6 @@ export class ActivityEditComponent implements OnInit {
   }
 
   saveFormToModel() {
-
-
     var title = this.activityForm.get('title').value;
     var fromDate = this.activityForm.get('fromDate').value;
     var fromTime = this.activityForm.get('fromTime').value;
@@ -106,15 +101,8 @@ export class ActivityEditComponent implements OnInit {
     var status = this.activityForm.get('status').value;
     var parent = this.activityForm.get('parent').value;
     var allDay = this.activityForm.get('allDay').value;
-    console.log(allDay);
-
-
-    console.log("time : " + fromTime);
-    console.log("from_date: " + fromDate)
-
     toDate = this.formToNumber(toDate, toTime);
     fromDate = this.formToNumber(fromDate, fromTime);
-
 
     var saveactivity = new Activity(
       this.id,
@@ -122,8 +110,6 @@ export class ActivityEditComponent implements OnInit {
       desc,
       fromDate,
       toDate,
-      // TODO:   new Date(fromDate + " " + fromTime),
-      // TODO:  new Date(toDate + " " + toTime),
       allDay,
       place,
       activitytype,
@@ -154,7 +140,7 @@ export class ActivityEditComponent implements OnInit {
     return date;
   }
 
-  public
+
   toggleValue() {
     if (this._allDay) {
 
@@ -164,8 +150,6 @@ export class ActivityEditComponent implements OnInit {
       this._allDay = true;
     }
     console.log("this.allDay =" + this._allDay);
-
-
   }
 
 

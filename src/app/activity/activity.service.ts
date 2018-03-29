@@ -20,11 +20,6 @@ export class ActivityService {
   constructor(private logger: LoggingService, private http: HttpClient) {
   }
 
-  public addActivity(activity: Activity) {
-
-    this.logger.logStatusChange('addActivity was called');
-  }
-
   public create(activity:Activity):Observable<Activity>{
     console.log(activity);
     return this.http.post<Activity>(this.urlActivity+"/new",activity);

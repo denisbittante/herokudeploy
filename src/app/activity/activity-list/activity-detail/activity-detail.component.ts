@@ -16,19 +16,18 @@ export class ActivityDetailComponent implements OnInit {
   constructor(private activityService: ActivityService, private route: ActivatedRoute) {
 
     this.route.params.subscribe(params => {
-      console.log(params);
       if (params['id']) {
         this.id = params['id'];
-        console.log(this.id);
       }
     });
     this.activityService.find(this.id).subscribe(data => this.item = data);
   }
 
   ngOnInit() {
-    console.log(this.item);
-
   }
 
+  public deleteActivty() {
+    this.activityService.delete(this.item.activityid).subscribe(data => this.route.navigate(['activities']));
+  }
 
 }

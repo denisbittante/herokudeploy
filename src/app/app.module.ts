@@ -2,18 +2,23 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {Routes, RouterModule} from "@angular/router";
-import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule, MatNativeDateModule} from '@angular/material';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FlexLayoutModule } from "@angular/flex-layout";
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {HttpClientModule} from "@angular/common/http";
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatNativeDateModule
+} from "@angular/material";
+import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppComponent} from "./app.component";
 import {CalendarListComponent} from "./calendar/calendar-list/calendar-list.component";
 import {CalendarNavComponent} from "./calendar/calendar-nav/calendar-nav.component";
@@ -37,17 +42,25 @@ import {ActivityConflictItemComponent} from "./activity/activity-conflict-list/a
 import {DropdownDirective} from "./shared/dropdown.directive";
 import {ActivityService} from "./activity/activity.service";
 import {LoggingService} from "./shared/logging.service";
+import {PersonListComponent} from "./person/person-list/person-list.component";
+import {PersonItemComponent} from "./person/person-list/person-item/person-item.component";
+import {PersonEditComponent} from "./person/person-list/person-edit/person-edit.component";
+import {PersonDetailComponent} from "./person/person-list/person-detail/person-detail.component";
 
 const appRoutes: Routes = [
-  {path: '', redirectTo:'/activities', pathMatch:'full'},
+  {path: '', redirectTo: '/activities', pathMatch: 'full'},
   {path: 'activities', component: ActivityListComponent},
   {path: 'activity/detail/:id', component: ActivityDetailComponent},
   {path: 'activity/edit/:id', component: ActivityEditComponent},
   {path: 'activity/new', component: ActivityEditComponent},
+  {path: 'persons', component: PersonListComponent},
+  {path: 'person/detail/:id', component: PersonDetailComponent},
+  {path: 'person/edit/:id', component: PersonEditComponent},
+  {path: 'person/new', component: PersonEditComponent},
   {path: 'calendar', component: CalendarListComponent},
   {path: 'calendar/detail/:id', component: CalendarDetailComponent},
   {path: 'calendar/edit/:id', component: CalendarEditComponent},
-  {path: '**', redirectTo: '/activities', pathMatch: 'full' }
+  {path: '**', redirectTo: '/activities', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -66,14 +79,18 @@ const appRoutes: Routes = [
     CalendarNavComponent,
     CalendarItemComponent,
     CalendarEditComponent,
-    CalendarDetailComponent
+    CalendarDetailComponent,
+    PersonListComponent,
+    PersonItemComponent,
+    PersonEditComponent,
+    PersonDetailComponent
 
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes,{ useHash: true }),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
@@ -92,11 +109,11 @@ const appRoutes: Routes = [
   ],
   providers: [
     ActivityService,
+    PersonService,
     LoggingService,
     SpaceService,
     ConflictSerivice,
     CalendarService,
-    PersonService,
     ActivityTypeService,
     LabelService
   ],

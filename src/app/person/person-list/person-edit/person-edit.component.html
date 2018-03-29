@@ -1,0 +1,99 @@
+<form [formGroup]="personForm">
+
+  <mat-toolbar>
+
+    <button mat-button type="button" (click)="cancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+
+    <button mat-button type="button" *ngIf="editing" (click)="update()"
+            [disabled]="!personForm.valid">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-raised-button type="button" color="primary" *ngIf="!editing" (click)="create()"
+            [disabled]="!personForm.valid"> Save
+    </button>
+    <button mat-icon-button type="button" [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item (click)="deletePerson()"
+    >Löschen
+    </button>
+  </mat-menu>
+
+
+  <div fxLayout style="margin: 20px;"  fxLayout.xs="column">
+    <div fxFlex.lt-md="10%" fxFlex.md-xs="33%" class="one">
+    </div>
+    <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field fxFlex>
+          <input matInput type="text"
+                 formControlName="name" placeholder="Name">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field fxFlex>
+          <input matInput type="text"
+                 formControlName="surname" placeholder="FamilyName">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-form-field fxFlex>
+          <input matInput type="text"
+                 formControlName="shortname" placeholder="Shortname">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+        <mat-icon>cake</mat-icon>
+        <mat-form-field>
+          <input matInput formControlName="birthday" [matDatepicker]="picker1" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <br>
+          <mat-divider fxFlex></mat-divider>
+          <br>
+        </div>
+      </div>
+
+
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>donut_large</mat-icon>
+          <mat-form-field fxFlex>
+
+            <input matInput
+                   type="text"
+                   placeholder="Space"
+                   formControlName="space"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>bookmark</mat-icon>
+          <mat-form-field fxFlex>
+            <input type="text" matInput
+                   formControlName="personstatus"
+                   placeholder="Status"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+    <div fxFlex.lt-md="10%"></div>
+
+  </div>
+</form>
