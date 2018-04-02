@@ -11,8 +11,7 @@ import {
   MatNativeDateModule,
   MatSelectModule
 } from "@angular/material";
-
-import {MatExpansionModule} from '@angular/material/expansion';
+import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatListModule} from "@angular/material/list";

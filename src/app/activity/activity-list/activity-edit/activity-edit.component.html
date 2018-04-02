@@ -31,68 +31,69 @@
 
     </div>
     <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+      <mat-card>
+        <mat-card-content>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+            <mat-form-field fxFlex>
+              <input matInput type="text"
+                     formControlName="title" placeholder="Summary" required>
+              <mat-error *ngIf="activityForm.get('title').hasError('required')">
+                Please enter a valid summary
+              </mat-error>
+            </mat-form-field>
 
-      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-        <mat-form-field fxFlex>
-          <input matInput type="text"
-                 formControlName="title" placeholder="Summary" required>
-          <mat-error *ngIf="activityForm.get('title').hasError('required')">
-            Please enter a valid summary
-          </mat-error>
-        </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+            <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+              <mat-form-field>
+                <input matInput formControlName="fromDate" [matDatepicker]="picker1" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field *ngIf="!_allDay">
+                <input matInput type="time" formControlName="fromTime">
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+              <mat-form-field>
+                <input matInput formControlName="toDate" [matDatepicker]="picker2" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field *ngIf="!_allDay">
+                <input type="time" matInput formControlName="toTime">
+              </mat-form-field>
+            </div>
+            <div>
+            </div>
+          </div>
+          <div>
+            <mat-checkbox formControlName="allDay" (click)="toggleValue()"> All day</mat-checkbox>
+          </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <br>
+              <mat-divider fxFlex></mat-divider>
+              <br>
+            </div>
+          </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <mat-icon>blur_circular</mat-icon>
+              <mat-form-field fxFlex>
+                <input matInput
+                       type="number"
+                       placeholder="Typ"
+                       formControlName="activitytype">
+              </mat-form-field>
+            </div>
+          </div>
 
-      </div>
-      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-          <mat-form-field>
-            <input matInput formControlName="fromDate" [matDatepicker]="picker1" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field *ngIf="!_allDay">
-            <input matInput type="time" formControlName="fromTime">
-          </mat-form-field>
-        </div>
-        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
-          <mat-form-field>
-            <input matInput formControlName="toDate" [matDatepicker]="picker2" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field *ngIf="!_allDay">
-            <input type="time" matInput formControlName="toTime">
-          </mat-form-field>
-        </div>
-        <div>
-        </div>
-      </div>
-      <div>
-        <mat-checkbox formControlName="allDay" (click)="toggleValue()"> All day</mat-checkbox>
-      </div>
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <br>
-          <mat-divider fxFlex></mat-divider>
-          <br>
-        </div>
-      </div>
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>blur_circular</mat-icon>
-          <mat-form-field fxFlex>
-            <input matInput
-                   type="number"
-                   placeholder="Typ"
-                   formControlName="activitytype">
-          </mat-form-field>
-        </div>
-      </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
 
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-
-          <mat-icon>place</mat-icon>
-          <mat-form-field fxFlex>
+              <mat-icon>place</mat-icon>
+              <mat-form-field fxFlex>
 
       <textarea matInput
                 matTextareaAutosize matAutosizeMinRows="2"
@@ -101,61 +102,65 @@
                 formControlName="place">
 
       </textarea>
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>donut_large</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <mat-icon>donut_large</mat-icon>
 
-          <mat-form-field fxFlex>
-            <mat-select formControlName="space" placeholder="Select an option" required>
-              <mat-option *ngFor="let space of select_spaces" [value]="space.id">
-                {{space.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>bookmark</mat-icon>
-          <mat-form-field fxFlex>
-            <input type="text" matInput
-                   formControlName="status"
-                   placeholder="Status"
-            >
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>link</mat-icon>
+              <mat-form-field fxFlex>
+                <mat-select formControlName="space" placeholder="Select an option" required>
+                  <mat-option *ngFor="let space of select_spaces" [value]="space.id">
+                    {{space.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <mat-icon>bookmark</mat-icon>
+              <mat-form-field fxFlex>
+                <input type="text" matInput
+                       formControlName="status"
+                       placeholder="Status"
+                >
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <mat-icon>link</mat-icon>
 
-          <mat-form-field fxFlex>
-            <input
-              matInput
-              type="text"
-              placeholder="Abhängig zu"
-              formControlName="parent"
-            >
-          </mat-form-field>
-        </div>
-      </div>
-      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+              <mat-form-field fxFlex>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Abhängig zu"
+                  formControlName="parent"
+                >
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-        <div fxLayout="row" fxLayoutGap="20px">
-          <mat-icon>subject</mat-icon>
+            <div fxLayout="row" fxLayoutGap="20px">
+              <mat-icon>subject</mat-icon>
 
-          <mat-form-field fxFlex>
+              <mat-form-field fxFlex>
       <textarea matInput
                 matTextareaAutosize matAutosizeMinRows="2"
                 matAutosizeMaxRows="10"
                 placeholder="Add description"
                 formControlName="desc"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+
     </div>
     <div fxFlex.lt-md="10%"></div>
 
