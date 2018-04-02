@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.spaces = this.spacesrv.spaces;
+   
 
   }
 
