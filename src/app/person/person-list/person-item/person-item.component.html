@@ -1,11 +1,23 @@
+<mat-expansion-panel hideToggle="false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{item.name}} {{item.surname}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{item.shortname}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+ <mat-icon>person</mat-icon>
 
-<mat-card  >
-  <mat-card-header >
-    <mat-card-title><a [routerLink]="['/person','detail', item.personid]"><span class="mat-h2">{{item.name}} {{item.surname}}</span></a></mat-card-title>
-    <a mat-button [routerLink]="['/person','edit', item.personid]"><mat-icon>edit</mat-icon></a>
-    <a mat-button mat-button (click)="deletePerson()"><mat-icon>delete</mat-icon></a>
-  </mat-card-header>
 
+  <mat-action-row>
+    <button mat-button [routerLink]="['/person','detail', item.personid]"> MORE</button>
+    <button mat-button [routerLink]="['/person','edit', item.personid]">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-button (click)="deletePerson()">
+      <mat-icon>delete</mat-icon>
+    </button>
 
-</mat-card>
-
+  </mat-action-row>
+</mat-expansion-panel>

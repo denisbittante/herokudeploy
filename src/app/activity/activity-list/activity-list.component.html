@@ -1,9 +1,12 @@
 <mat-toolbar class="mat-caption">
-  <br>
+
   <span class="example-spacer"></span>
   <mat-icon>search</mat-icon>
-    <mat-form-field>
+  <mat-form-field>
     <input matInput (keyup)="refresh()" type="text" placeholder="Search" [(ngModel)]="searchInput">
+    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''; refresh()">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 </mat-toolbar>
 <br>
@@ -21,7 +24,7 @@
   <div fxFlex></div>
 
 </div>
-  <span class="done">
+<span class="done">
   <button mat-fab [routerLink]="['/activity','new']">
     <mat-icon>add circle</mat-icon>
   </button>

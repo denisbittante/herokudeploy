@@ -26,8 +26,5 @@ export class ActivityItemComponent implements OnInit {
   }
 
 
-  public deleteActivty() {
-    this.activityService.delete(this.item.activityid).subscribe(data => this.onRefresh.emit(true));
-  }
 
 }

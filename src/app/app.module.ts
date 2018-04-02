@@ -8,8 +8,11 @@ import {
   MatCheckboxModule,
   MatMenuModule,
   MatToolbarModule,
-  MatNativeDateModule, MatSelectModule
+  MatNativeDateModule,
+  MatSelectModule
 } from "@angular/material";
+
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatListModule} from "@angular/material/list";
@@ -106,7 +109,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
   ],
   providers: [
     ActivityService,

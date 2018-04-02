@@ -3,7 +3,7 @@
   <span class="example-spacer"></span>
   <mat-icon>search</mat-icon>
   <mat-form-field>
-    <input matInput  type="text" placeholder="Search">
+    <input matInput type="text" placeholder="Search">
   </mat-form-field>
 </mat-toolbar>
 <br>
@@ -14,7 +14,10 @@
   <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
     <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="start stretch">
-      <app-person-item *ngFor="let item of personlist" [item]="item " (onRefresh)="refresh()"></app-person-item>
+
+      <mat-accordion class="example-headers-align">
+        <app-person-item *ngFor="let item of personlist" [item]="item " (onRefresh)="refresh()"></app-person-item>
+      </mat-accordion>
     </div>
 
   </div>
