@@ -18,16 +18,13 @@ export class ActivityListComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.activityService.list().subscribe(data => this.activitylist = data);
-
-    //this.activitylist = this.activityService.activitylist;
-    console.log(this.activitylist);
+    this.activityService.list(null).subscribe(data => this.activitylist = data);
   }
 
 
   refresh(){
-      this.activityService.list().subscribe(data => this.activitylist = data);
-
+      this.activityService.list(this.searchInput).subscribe(data => this.activitylist = data);
   }
+
+
 }

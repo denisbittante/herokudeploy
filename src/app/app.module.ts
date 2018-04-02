@@ -8,7 +8,7 @@ import {
   MatCheckboxModule,
   MatMenuModule,
   MatToolbarModule,
-  MatNativeDateModule
+  MatNativeDateModule, MatSelectModule
 } from "@angular/material";
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -105,7 +105,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     ActivityService,

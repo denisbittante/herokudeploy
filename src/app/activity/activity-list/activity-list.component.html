@@ -3,7 +3,7 @@
   <span class="example-spacer"></span>
   <mat-icon>search</mat-icon>
     <mat-form-field>
-    <input matInput  type="text" placeholder="Search">
+    <input matInput (keyup)="refresh()" type="text" placeholder="Search" [(ngModel)]="searchInput">
   </mat-form-field>
 </mat-toolbar>
 <br>

@@ -1,7 +1,7 @@
 import {Activity} from "./activity-model";
 import {Injectable} from "@angular/core";
 import {LoggingService} from "../shared/logging.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
@@ -20,20 +20,28 @@ export class ActivityService {
   constructor(private logger: LoggingService, private http: HttpClient) {
   }
 
-  public create(activity:Activity):Observable<Activity>{
+  public create(activity: Activity): Observable<Activity> {
     console.log(activity);
-    return this.http.post<Activity>(this.urlActivity+"/new",activity);
+    return this.http.post<Activity>(this.urlActivity + "/new", activity);
   }
-  public list(): Observable<Array<Activity>> {
-    return this.http.get<Array<Activity>>(this.urlActivities);
+
+  public list(query: string): Observable<Array<Activity>> {
+
+    if (query) {
+      let Params = new HttpParams();
+      Params = Params.append('q', query);
+      return this.http.get<Array<Activity>>(this.urlActivities, {params: Params});
+    } else {
+      return this.http.get<Array<Activity>>(this.urlActivities);
+    }
   }
 
   public find(id: number): Observable<Activity> {
     return this.http.get<Activity>(this.urlActivity + "/" + id);
   }
 
-  public update(activity:Activity): Observable<Activity> {
-    return this.http.put<Activity>(this.urlActivity, activity );
+  public update(activity: Activity): Observable<Activity> {
+    return this.http.put<Activity>(this.urlActivity, activity);
   }
 
   public delete(id: number): Observable<any> {

@@ -6,6 +6,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {PersonService} from "../../../person/person.service";
 import {ActivityTypeService} from "../../activity-type.service";
 import {LabelService} from "../../label.service";
+import {SpaceModel} from "../../../space/space-model";
 
 @Component({
   selector: 'app-activity-edit',
@@ -19,6 +20,8 @@ export class ActivityEditComponent implements OnInit {
   id: number = null;
   activity: Activity;
   _allDay: boolean = false;
+
+  public select_spaces: Array <SpaceModel>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -36,22 +39,17 @@ export class ActivityEditComponent implements OnInit {
       'desc': new FormControl(null),
       'place': new FormControl(null),
       'activitytype': new FormControl(null),
-      'space': new FormControl(null),
+      'space': new FormControl(),
       'parent': new FormControl(null),
       'status': new FormControl(null),
-      'linked': new FormControl(null),
-      'sf_incharge': new FormControl(false),
-      'sf_helper': new FormControl(false),
-      'sf_space': new FormControl(false),
-      'sf_linked': new FormControl(false),
-      'sf_labels': new FormControl(false),
       'allDay': new FormControl(null)
     });
 
   }
+
   // ACTIONS
 
-  public  update() {
+  public update() {
     this.saveFormToModel();
     this.activitysrv.update(this.activity).subscribe(data => this.router.navigate(['activities']));
     this.routeToMainpage();
@@ -86,6 +84,14 @@ export class ActivityEditComponent implements OnInit {
     } else {
       this.editing = false;
     }
+
+    this.select_spaces= [
+        new SpaceModel("Space 1", "Desc Space1", 1),
+        new SpaceModel("Space 2", "Desc Space2", 2),
+        new SpaceModel("Space 3", "Desc Space3", 3)
+      ];
+    console.log(this.select_spaces);
+
   }
 
   saveFormToModel() {

@@ -35,8 +35,12 @@
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
         <mat-form-field fxFlex>
           <input matInput type="text"
-                 formControlName="title" placeholder="Summary">
+                 formControlName="title" placeholder="Summary" required>
+          <mat-error *ngIf="activityForm.get('title').hasError('required')">
+            Please enter a valid summary
+          </mat-error>
         </mat-form-field>
+
       </div>
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
         <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
@@ -103,13 +107,13 @@
       <div>
         <div fxLayout="row" fxLayoutGap="20px">
           <mat-icon>donut_large</mat-icon>
-          <mat-form-field fxFlex>
 
-            <input matInput
-                   type="text"
-                   placeholder="Space"
-                   formControlName="space"
-            >
+          <mat-form-field fxFlex>
+            <mat-select formControlName="space" placeholder="Select an option" required>
+              <mat-option *ngFor="let space of select_spaces" [value]="space.id">
+                {{space.name}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
