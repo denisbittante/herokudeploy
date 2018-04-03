@@ -122,10 +122,11 @@
             <div fxLayout="row" fxLayoutGap="20px">
               <mat-icon>bookmark</mat-icon>
               <mat-form-field fxFlex>
-                <input type="text" matInput
-                       formControlName="status"
-                       placeholder="Status"
-                >
+                <mat-select formControlName="status" placeholder="Select an option" required>
+                  <mat-option *ngFor="let entry of select_status | keys" [value]="entry.key">
+                    {{entry.value}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
           </div>
