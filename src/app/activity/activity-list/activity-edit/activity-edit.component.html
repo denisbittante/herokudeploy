@@ -123,8 +123,8 @@
               <mat-icon>bookmark</mat-icon>
               <mat-form-field fxFlex>
                 <mat-select formControlName="status" placeholder="Select an option" required>
-                  <mat-option *ngFor="let entry of select_status | keys" [value]="entry.key">
-                    {{entry.value}}
+                  <mat-option *ngFor="let status of select_status " [value]="status.statusid">
+                    {{status.statustext}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
