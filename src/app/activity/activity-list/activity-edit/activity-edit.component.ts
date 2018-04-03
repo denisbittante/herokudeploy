@@ -22,7 +22,14 @@ export class ActivityEditComponent implements OnInit {
   _allDay: boolean = false;
 
   public select_spaces: Array <SpaceModel>;
-
+  public select_status: new Map([
+    [ 1, "Offen" ],
+    [ 2, "in Arbeit"],
+    [ 3, "Erledigt" ],
+    [ 4, "Veröffentlicht" ],
+    [ 5, "Archiviert" ],
+    [ 6, "Storniert" ]
+  ]);
   constructor(private router: Router,
               private route: ActivatedRoute,
               private activitysrv: ActivityService,
@@ -90,8 +97,8 @@ export class ActivityEditComponent implements OnInit {
         new SpaceModel("Space 2", "Desc Space2", 2),
         new SpaceModel("Space 3", "Desc Space3", 3)
       ];
-    console.log(this.select_spaces);
-
+    
+   
   }
 
   saveFormToModel() {
