@@ -22,7 +22,7 @@ export class ActivityEditComponent implements OnInit {
   _allDay: boolean = false;
 
   public select_spaces: Array <SpaceModel>;
-  public select_status: new Map([
+  public select_status = new Map([
     [ 1, "Offen" ],
     [ 2, "in Arbeit"],
     [ 3, "Erledigt" ],
