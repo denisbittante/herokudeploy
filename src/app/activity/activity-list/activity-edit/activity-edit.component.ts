@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActivityService} from "../../activity.service";
+import {ActivityStatus} from "../../activity-status-model";
 import {Activity} from "../../activity-model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PersonService} from "../../../person/person.service";
@@ -22,14 +23,8 @@ export class ActivityEditComponent implements OnInit {
   _allDay: boolean = false;
 
   public select_spaces: Array <SpaceModel>;
-  public select_status = new Map([
-    [ 1, "Offen" ],
-    [ 2, "in Arbeit"],
-    [ 3, "Erledigt" ],
-    [ 4, "Veröffentlicht" ],
-    [ 5, "Archiviert" ],
-    [ 6, "Storniert" ]
-  ]);
+  public select_status: Array<ActivityStatus>;
+ 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private activitysrv: ActivityService,
@@ -97,7 +92,14 @@ export class ActivityEditComponent implements OnInit {
         new SpaceModel("Space 2", "Desc Space2", 2),
         new SpaceModel("Space 3", "Desc Space3", 3)
       ];
-    
+    this.select_status= [
+      new ActivityStatus( 1, "Offen" ),
+     new ActivityStatus( 2, "in Arbeit"),
+     new ActivityStatus( 3, "Erledigt" ),
+     new ActivityStatus( 4, "Veröffentlicht" ),
+     new ActivityStatus( 5, "Archiviert" ),
+     new ActivityStatus( 6, "Storniert" )
+    ];
    
   }
 
