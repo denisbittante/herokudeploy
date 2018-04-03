@@ -9,9 +9,9 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatNativeDateModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule
 } from "@angular/material";
-import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatListModule} from "@angular/material/list";
