@@ -7,3 +7,8 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.mat-expanded {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
