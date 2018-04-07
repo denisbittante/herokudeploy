@@ -9,8 +9,7 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatNativeDateModule,
-  MatSelectModule,
-  MatExpansionModule
+  MatSelectModule
 } from "@angular/material";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatExpansionModule} from "@angular/material/expansion";
