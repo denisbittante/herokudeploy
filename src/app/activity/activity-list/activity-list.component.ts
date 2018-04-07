@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Activity} from "../activity-model";
 import {ActivityService} from "../activity.service";
+import {ActivityPageable} from "../activity-pageable";
 
 @Component({
   selector: 'app-activity-list',
@@ -8,18 +8,32 @@ import {ActivityService} from "../activity.service";
   styleUrls: ['activity-list.component.css'],
 })
 export class ActivityListComponent implements OnInit {
-  searchInput: string;
-  activitylist: Array<Activity>;
+  public searchInput: string;
+  public activities: ActivityPageable;
+  public length: number = 100;
+  public pageSize = 10;
+  public pageSizeOptions = [5, 10, 25, 100];
+  private pageIndex: number = 0;
 
   constructor(private activityService: ActivityService) {
   }
 
   ngOnInit() {
-    this.activityService.list(null).subscribe(data => this.activitylist = data);
+    this.refresh();
+  }
+
+  onReceivingData(data: ActivityPageable) {
+    this.activities = data;
+    this.length = this.activities.totalElements;
   }
 
   refresh() {
-    this.activityService.list(this.searchInput).subscribe(data => this.activitylist = data);
+    this.activityService.list(this.searchInput, this.pageIndex, this.pageSize).subscribe(data => this.onReceivingData(data));
+  }
+
+  onPaginateChange(event) {
+    this.pageIndex = event.pageIndex;
+    this.refresh();
   }
 
 }

@@ -16,9 +16,18 @@
   </div>
   <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-    <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch">
-      <app-activity-item *ngFor="let item of activitylist" [item]="item " (onRefresh)="refresh()"></app-activity-item>
+    <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch" *ngIf="activities">
+      <app-activity-item *ngFor="let item of activities.content" [item]="item " (onRefresh)="refresh()"></app-activity-item>
+
+
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="onPaginateChange($event)">
+      </mat-paginator>
     </div>
+
+
 
   </div>
   <div fxFlex></div>

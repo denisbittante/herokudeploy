@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
+import {ActivityPageable} from "./activity-pageable";
 
 /**
  * Created by Denis Bittante on 14.12.2017.
@@ -25,26 +26,26 @@ export class ActivityService {
     return this.http.post<Activity>(this.urlActivity + "/new", activity);
   }
 
-  public list(query: string): Observable<Array<Activity>> {
+  public list(query: string, page: number, pagesize: number): Observable<ActivityPageable> {
+    let Params = new HttpParams();
+    Params = Params.append('p', '' + page);
+    Params = Params.append('ps', '' + pagesize);
 
     if (query) {
-      let Params = new HttpParams();
       Params = Params.append('q', query);
-      return this.http.get<Array<Activity>>(this.urlActivities, {params: Params});
-    } else {
-      return this.http.get<Array<Activity>>(this.urlActivities);
     }
+    return this.http.get<ActivityPageable>(this.urlActivities, {params: Params});
   }
 
-  public find(id: number): Observable<Activity> {
+  public  find(id: number): Observable < Activity > {
     return this.http.get<Activity>(this.urlActivity + "/" + id);
   }
 
-  public update(activity: Activity): Observable<Activity> {
+  public  update(activity: Activity): Observable < Activity > {
     return this.http.put<Activity>(this.urlActivity, activity);
   }
 
-  public delete(id: number): Observable<any> {
+  public  delete(id: number): Observable < any > {
     const url = this.urlActivity + "/" + id;
     return this.http.delete(url);
 
