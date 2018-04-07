@@ -33,6 +33,7 @@ export class ActivityListComponent implements OnInit {
 
   onPaginateChange(event) {
     this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
     this.refresh();
   }
 

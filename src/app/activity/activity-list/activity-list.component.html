@@ -1,10 +1,12 @@
 <mat-toolbar class="mat-caption">
 
+
   <span class="example-spacer"></span>
   <mat-icon>search</mat-icon>
   <mat-form-field>
     <input matInput (keyup)="refresh()" type="text" placeholder="Search" [(ngModel)]="searchInput">
-    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear" (click)="searchInput=''; refresh()">
+    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear"
+            (click)="searchInput=''; refresh()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -16,17 +18,18 @@
   </div>
   <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-    <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch" *ngIf="activities">
-      <app-activity-item *ngFor="let item of activities.content" [item]="item " (onRefresh)="refresh()"></app-activity-item>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPaginateChange($event)">
+    </mat-paginator>
+    <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch"
+         *ngIf="activities">
+      <app-activity-item *ngFor="let item of activities.content" [item]="item "
+                         (onRefresh)="refresh()"></app-activity-item>
 
 
-      <mat-paginator [length]="length"
-                     [pageSize]="pageSize"
-                     [pageSizeOptions]="pageSizeOptions"
-                     (page)="onPaginateChange($event)">
-      </mat-paginator>
     </div>
-
 
 
   </div>
