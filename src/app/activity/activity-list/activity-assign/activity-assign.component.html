@@ -1,0 +1,72 @@
+
+<button mat-mini-fab color="warn" (click)="deleteAssign()">-</button>
+
+<mat-form-field>
+  <mat-select (selectionChange)="changed($event)" placeholder="Rolle" [formControl]="roleControl"  >
+    <mat-option [value]="1">
+      Owner
+    </mat-option>
+    <mat-option [value]="2">
+      Helper
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select (selectionChange)="changed($event)" placeholder="Person" [formControl]="personControl">
+  <mat-option>-- None --</mat-option>
+  <mat-optgroup [label]="assignoption.status" *ngFor="let assignoption of assignoptions">
+    <mat-option (click)="showInfo()" *ngFor="let pers of assignoption.person" [value]="pers.id" >
+      {{ pers.viewValue }}
+    </mat-option>
+  </mat-optgroup>
+  </mat-select>
+</mat-form-field>
+<span class="example-spacer"></span>
+
+<!-- Infos -->
+
+<mat-grid-list cols="12" rowHeight="100px" *ngIf="hasInfo('availableInfo') && assignInfoShow">
+  <mat-grid-tile [colspan]="2">
+    <mat-icon>accessibility_new</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="8">
+    Last time this type of activity was assigned was : {{getPersonInfo('availableInfo')|date:'fullDate'}}
+   <!-- Last time this type of activity was assigned was : {{personControl.value?.availableInfo|date:'fullDate'}}-->
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="2">
+    <mat-icon (click)="hideInfo()">close</mat-icon>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="12" rowHeight="100px" *ngIf="hasInfo('busyInfo') && assignInfoShow">
+  <mat-grid-tile [colspan]="2">
+    <mat-icon>transfer_within_a_station</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="8">
+    Same day {{getPersonInfo('busyInfo')}} others activity where assigned to this person. Consider choosing someone
+    else.
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="2">
+    <mat-icon (click)="hideInfo()">close</mat-icon>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<mat-grid-list cols="12" rowHeight="100px" *ngIf="hasInfo('unavailable_until') && assignInfoShow">
+  <mat-grid-tile [colspan]="2">
+    <mat-icon>flight</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="8">
+    This person will be available again form {{getPersonInfo('unavailable_until')|date:'fullDate'}} on.
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-caption" [colspan]="2">
+    <mat-icon (click)="hideInfo()">close</mat-icon>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+
+
+
+

@@ -2,9 +2,11 @@
 
 
   <span class="example-spacer"></span>
-  <mat-icon>search</mat-icon>
+
   <mat-form-field>
-    <input matInput (keyup)="refresh()" type="text" placeholder="Search" [(ngModel)]="searchInput">
+    <input matInput (keyup)="refresh()" type="text" [(ngModel)]="searchInput" class="mat-body-1">
+    <span matPrefix class="mat-body-1"> <mat-icon>search</mat-icon></span>
+
     <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear"
             (click)="searchInput=''; refresh()">
       <mat-icon>close</mat-icon>
@@ -23,13 +25,24 @@
                    [pageSizeOptions]="pageSizeOptions"
                    (page)="onPaginateChange($event)">
     </mat-paginator>
+
     <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch"
-         *ngIf="activities">
-      <app-activity-item *ngFor="let item of activities.content" [item]="item "
-                         (onRefresh)="refresh()"></app-activity-item>
+         *ngIf="activities  else loading">
+
+      <app-activity-item *ngFor="let item of activities.content; let i = index" [item]="item"
+                         [itembefore]="getItemBefore(i)" (onRefresh)="refresh()"></app-activity-item>
 
 
     </div>
+    <ng-template #loading>
+      <div class="app-loading">
+        <div class="logo"></div>
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        </svg>
+      </div>
+
+    </ng-template>
 
 
   </div>

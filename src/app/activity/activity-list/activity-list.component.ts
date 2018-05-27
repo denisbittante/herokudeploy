@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivityService} from "../activity.service";
 import {ActivityPageable} from "../activity-pageable";
+import {Activity} from "../activity-model";
 
 @Component({
   selector: 'app-activity-list',
@@ -35,6 +36,10 @@ export class ActivityListComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.refresh();
+  }
+
+  getItemBefore(i: number): Activity {
+    return this.activities.content.slice(i - 1)[0];
   }
 
 }

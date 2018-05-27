@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class ActivityItemComponent implements OnInit {
 
   @Input() item: Activity;
+  @Input() itembefore: Activity;
   @Output() onRefresh: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public personInCharge: Person;
@@ -25,6 +26,40 @@ export class ActivityItemComponent implements OnInit {
 
   }
 
+
+  public isSameDay(): boolean {
+
+    var itemfrom = new Date(this.item.actvityfrom);
+    var itembeforefrom = new Date(this.itembefore.actvityfrom);
+
+    if (this.itembefore) {
+      if (itemfrom.getDate() === itembeforefrom.getDate()) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  public isSameMonth(): boolean {
+    var itemfrom = new Date(this.item.actvityfrom);
+    var itembeforefrom = new Date(this.itembefore.actvityfrom);
+
+    if (this.itembefore) {
+      if (
+        (itemfrom.getMonth() === itembeforefrom.getMonth())
+      && (itemfrom.getFullYear() === itembeforefrom.getFullYear())
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
 
 
 }

@@ -9,7 +9,7 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatNativeDateModule,
-  MatSelectModule
+  MatSelectModule, MatProgressSpinnerModule
 } from "@angular/material";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -49,6 +49,8 @@ import {PersonListComponent} from "./person/person-list/person-list.component";
 import {PersonItemComponent} from "./person/person-list/person-item/person-item.component";
 import {PersonEditComponent} from "./person/person-list/person-edit/person-edit.component";
 import {PersonDetailComponent} from "./person/person-list/person-detail/person-detail.component";
+import {ActivityAssignComponent} from "./activity/activity-list/activity-assign/activity-assign.component";
+import {AssignService} from "./activity/assign-service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/activities', pathMatch: 'full'},
@@ -86,7 +88,8 @@ const appRoutes: Routes = [
     PersonListComponent,
     PersonItemComponent,
     PersonEditComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    ActivityAssignComponent
 
   ],
   imports: [
@@ -111,7 +114,9 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatSelectModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [
     ActivityService,
@@ -121,7 +126,8 @@ const appRoutes: Routes = [
     ConflictSerivice,
     CalendarService,
     ActivityTypeService,
-    LabelService
+    LabelService,
+    AssignService
   ],
   bootstrap: [AppComponent,]
 })

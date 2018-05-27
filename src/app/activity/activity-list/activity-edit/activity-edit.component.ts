@@ -8,6 +8,8 @@ import {PersonService} from "../../../person/person.service";
 import {ActivityTypeService} from "../../activity-type.service";
 import {LabelService} from "../../label.service";
 import {SpaceModel} from "../../../space/space-model";
+import {AssignService} from "../../assign-service";
+import {Assign} from "../../assign-model";
 
 @Component({
   selector: 'app-activity-edit',
@@ -24,10 +26,12 @@ export class ActivityEditComponent implements OnInit {
 
   public select_spaces: Array <SpaceModel>;
   public select_status: Array<ActivityStatus>;
- 
+  public assign_array: Array<Assign> = new Array();
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private activitysrv: ActivityService,
+              private assignService: AssignService,
               private personsrv: PersonService,
               private activitytypesrv: ActivityTypeService,
               private labelsrv: LabelService) {
@@ -72,6 +76,11 @@ export class ActivityEditComponent implements OnInit {
     this.routeToMainpage();
   }
 
+  public addAssign() {
+    this.assign_array.push(new Assign(null, this.id, null, null, null, null));
+ }
+
+
   routeToMainpage() {
     this.router.navigate(['activities']);
   }
@@ -87,20 +96,22 @@ export class ActivityEditComponent implements OnInit {
       this.editing = false;
     }
 
-    this.select_spaces= [
-        new SpaceModel("Space 1", "Desc Space1", 1),
-        new SpaceModel("Space 2", "Desc Space2", 2),
-        new SpaceModel("Space 3", "Desc Space3", 3)
-      ];
-    this.select_status= [
-      new ActivityStatus( 1, "Offen" ),
-     new ActivityStatus( 2, "in Arbeit"),
-     new ActivityStatus( 3, "Erledigt" ),
-     new ActivityStatus( 4, "Veröffentlicht" ),
-     new ActivityStatus( 5, "Archiviert" ),
-     new ActivityStatus( 6, "Storniert" )
+    this.select_spaces = [
+      new SpaceModel("Space 1", "Desc Space1", 1),
+      new SpaceModel("Space 2", "Desc Space2", 2),
+      new SpaceModel("Space 3", "Desc Space3", 3)
     ];
-   
+    this.select_status = [
+      new ActivityStatus(1, "Offen"),
+      new ActivityStatus(2, "in Arbeit"),
+      new ActivityStatus(3, "Erledigt"),
+      new ActivityStatus(4, "Veröffentlicht"),
+      new ActivityStatus(5, "Archiviert"),
+      new ActivityStatus(6, "Storniert")
+    ];
+
+    this.refresh();
+
   }
 
   saveFormToModel() {
@@ -155,6 +166,14 @@ export class ActivityEditComponent implements OnInit {
     return date;
   }
 
+
+  refresh() {
+    this.assignService.list().subscribe(data => this.onReceivingData(data));
+  }
+
+  onReceivingData(data: Array<Assign>) {
+    this.assign_array = data;
+  }
 
   toggleValue() {
     if (this._allDay) {

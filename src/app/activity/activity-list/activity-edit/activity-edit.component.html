@@ -20,14 +20,14 @@
   </mat-toolbar>
 
   <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item (click)="deleteActivty()"
-    >Löschen
+    <button mat-menu-item (click)="deleteActivty()">
+      Löschen
     </button>
   </mat-menu>
 
 
   <div fxLayout style="margin: 20px;" fxLayout.xs="column">
-    <div fxFlex.lt-md="10%" fxFlex.md-xs="33%" class="one">
+    <div fxFlex.lt-md="20%" fxFlex.md-xs="33%" class="one">
 
     </div>
     <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
@@ -67,8 +67,32 @@
             <div>
             </div>
           </div>
-          <div>
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
             <mat-checkbox formControlName="allDay" (click)="toggleValue()"> All day</mat-checkbox>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+            <br>
+            <mat-divider fxFlex></mat-divider>
+            <br>
+          </div>
+
+          <div >
+            <div fxLayout="row" fxLayoutGap="20px">
+              <h3 class="subheading-2">Assign</h3>
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of assign_array">
+
+              <app-activity-assign [item]="item" (deleted)="refresh()"></app-activity-assign>
+
+
+            </div>
+            <div fxLayout="row" fxLayoutGap="20px">
+
+              <span class="example-spacer"></span>
+              <button mat-mini-fab color="primary" (click)="addAssign()" fxflexalign.gt-lg="right">+</button>
+
+            </div>
           </div>
           <div>
             <div fxLayout="row" fxLayoutGap="20px">
@@ -77,6 +101,7 @@
               <br>
             </div>
           </div>
+
           <div>
             <div fxLayout="row" fxLayoutGap="20px">
               <mat-icon>blur_circular</mat-icon>
