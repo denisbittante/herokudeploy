@@ -1,0 +1,26 @@
+<div fxLayout fxLayout.xs="column">
+  <div fxFlex.lt-md="10%" fxFlex.md-xs="33%"></div>
+  <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+
+    <mat-card>
+      <mat-card-header><span class="mat-dialog-title">Register</span></mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="onSignup(f)" [formGroup]="signup" #f="ngForm">
+          <mat-form-field class="mat-form-field">
+            <input matInput placeholder="E-Mail" type="email" id="email" name="email" formControlName="email">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mat-form-field">
+            <input matInput placeholder="Password" type="password" id="password" name="password"
+                   formControlName="password">
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" [disabled]="!f.valid" type="submit">Sign Up</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex.lt-md="10%" fxFlex.md-xs="33%">
+  </div>
+
+</div>

@@ -1,15 +1,74 @@
-<mat-toolbar  *ngIf="!isSameMonth()">
-    <span>{{item.actvityfrom | date:'MMMM y'}}</span>
-</mat-toolbar>
+<mat-list>
+  <h4 *ngIf="!isSameMonth()" style="color: rgba(0, 0, 0, 0.54);">{{item.actvityfrom | date:'MMMM y'}}</h4>
+</mat-list>
 <mat-card class="activity-item-card">
   <mat-card-header [routerLink]="['/activity','detail', item.activityid]">
 
     <mat-card-title><span class="mat-h2">{{item.summary}}</span></mat-card-title>
     <mat-card-subtitle>{{item.actvityfrom | date:'fullDate'}}
+      <h3 mat-line>{{item.description}}</h3>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <span class="mat-caption">{{item.description}}</span>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title  style="color: rgba(0, 0, 0, 0.54);">
+            Details
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-nav-list dense>
+          <mat-list-item>
+            Song 55 and Prayer
+          </mat-list-item>
+          <mat-list-item>
+            Opening Comments (3 min. or less)
+          </mat-list-item>
+          <mat-list-item>
+            <h3>TREASURES FROM GOD’S WORD</h3>
+          </mat-list-item>
+          <mat-list-item>
+            <h4> “Avoid Becoming Ensnared by Fear of Man”:</h4> (10 min.)
+          </mat-list-item>
+          <mat-list-item>
+            Digging for Spiritual Gems: (8 min.)
+          </mat-list-item>
+          <mat-list-item>
+            <b>Bible Reading:</b> (4 min. or less) Mr 14:43-59
+          </mat-list-item>
+          <mat-list-item>
+            <h3>APPLY YOURSELF TO THE FIELD MINISTRY</h3>
+          </mat-list-item>
+          <mat-list-item>
+            Second Return Visit: (3 min. or less) Begin with the sample conversation. Invite the person to the meeting.
+          </mat-list-item>
+          <mat-list-item>
+            Third Return Visit: (3 min. or less) Choose your own scripture. Offer a study publication.
+          </mat-list-item>
+          <mat-list-item>
+            <h3>LIVING AS CHRISTIANS</h3>
+          </mat-list-item>
+          <mat-list-item>
+            Song 73
+          </mat-list-item>
+          <mat-list-item>
+            “Jehovah Will Help You Be Bold”: (15 min.) Discussion. Play the video.
+          </mat-list-item>
+          <mat-list-item>
+            Congregation Bible Study: (30 min.) jy chap. 22
+          </mat-list-item>
+          <mat-list-item>
+            Review Followed by Preview of Next Week (3 min.)
+          </mat-list-item>
+          <mat-list-item>
+            Song 81 and Prayer
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-button [routerLink]="['/activity','detail', item.activityid]">

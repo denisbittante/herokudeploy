@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {SpaceService} from "./space/space.service";
 import {SpaceModel} from "./space/space-model";
+import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -17,13 +18,18 @@ export class AppComponent implements OnInit {
 
   }
 
-  constructor(private spacesrv: SpaceService) {
+  constructor(private spacesrv: SpaceService, private authService: AuthService) {
 
   }
 
   ngOnInit() {
-   
 
+
+  }
+
+  onLogout() {
+
+    this.authService.logout();
   }
 
 }

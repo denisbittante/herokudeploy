@@ -1,7 +1,7 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
-import {Routes, RouterModule} from "@angular/router";
+import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {
   MatButtonModule,
@@ -9,7 +9,8 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatNativeDateModule,
-  MatSelectModule, MatProgressSpinnerModule
+  MatSelectModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -24,11 +25,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppComponent} from "./app.component";
 import {CalendarListComponent} from "./calendar/calendar-list/calendar-list.component";
-import {CalendarNavComponent} from "./calendar/calendar-nav/calendar-nav.component";
 import {CalendarItemComponent} from "./calendar/calendar-list/calendar-item/calendar-item.component";
 import {SpaceService} from "./space/space.service";
 import {ConflictSerivice} from "./activity/activity-conflict-list/activity-conflict.service";
-import {CalendarService} from "./calendar/calendar.service";
 import {PersonService} from "./person/person.service";
 import {ActivityTypeService} from "./activity/activity-type.service";
 import {CalendarEditComponent} from "./calendar/calendar-edit/calendar-edit.component";
@@ -51,22 +50,13 @@ import {PersonEditComponent} from "./person/person-list/person-edit/person-edit.
 import {PersonDetailComponent} from "./person/person-list/person-detail/person-detail.component";
 import {ActivityAssignComponent} from "./activity/activity-list/activity-assign/activity-assign.component";
 import {AssignService} from "./activity/assign-service";
+import {CalendarService} from "./calendar/calendar.service";
+import {SigninComponent} from "./auth/signin/signin.component";
+import {SignupComponent} from "./auth/signup/signup.component";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth-guard.service";
+import {AppRoutingModule} from "./app-routing.module";
 
-const appRoutes: Routes = [
-  {path: '', redirectTo: '/activities', pathMatch: 'full'},
-  {path: 'activities', component: ActivityListComponent},
-  {path: 'activity/detail/:id', component: ActivityDetailComponent},
-  {path: 'activity/edit/:id', component: ActivityEditComponent},
-  {path: 'activity/new', component: ActivityEditComponent},
-  {path: 'persons', component: PersonListComponent},
-  {path: 'person/detail/:id', component: PersonDetailComponent},
-  {path: 'person/edit/:id', component: PersonEditComponent},
-  {path: 'person/new', component: PersonEditComponent},
-  {path: 'calendar', component: CalendarListComponent},
-  {path: 'calendar/detail/:id', component: CalendarDetailComponent},
-  {path: 'calendar/edit/:id', component: CalendarEditComponent},
-  {path: '**', redirectTo: '/activities', pathMatch: 'full'}
-];
 
 @NgModule({
   declarations: [
@@ -81,7 +71,6 @@ const appRoutes: Routes = [
     ActivityConflictItemComponent,
     DropdownDirective,
     CalendarListComponent,
-    CalendarNavComponent,
     CalendarItemComponent,
     CalendarEditComponent,
     CalendarDetailComponent,
@@ -89,14 +78,15 @@ const appRoutes: Routes = [
     PersonItemComponent,
     PersonEditComponent,
     PersonDetailComponent,
-    ActivityAssignComponent
+    ActivityAssignComponent,
+    SigninComponent,
+    SignupComponent
 
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
@@ -115,7 +105,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatExpansionModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AppRoutingModule
 
   ],
   providers: [
@@ -127,7 +118,9 @@ const appRoutes: Routes = [
     CalendarService,
     ActivityTypeService,
     LabelService,
-    AssignService
+    AssignService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent,]
 })
