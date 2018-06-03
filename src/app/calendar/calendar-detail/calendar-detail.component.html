@@ -1,3 +1,29 @@
-<p>
-  calendar-detail works!
-</p>
+<div fxLayout fxLayout.xs="column" *ngIf="item!=undefined">
+  <div fxFlex.lt-md="10%" fxFlex.md-xs="33%"></div>
+  <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+    <mat-card>
+      <mat-card-header>
+        {{item.calendarid}}
+        {{item.personid}}
+        {{item.created|date:'longDate'}}
+        {{item.mutated|date:'longDate'}}
+        {{item.calfrom|date:'longDate'}}
+        {{item.calto|date:'longDate'}}
+        {{item.caltype}}
+        {{item.description}}
+        {{item.allDay}}
+      </mat-card-header>
+      <mat-card-content></mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/calendar','edit', item.calendarid]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button mat-button (click)="delete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxFlex></div>
+</div>

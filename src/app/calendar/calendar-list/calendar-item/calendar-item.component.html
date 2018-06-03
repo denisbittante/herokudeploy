@@ -1,37 +1,32 @@
-<div class="panel panel-default ">
-  <div class="panel-body">
 
-    <div class="col-md-1 pull-right">
+<mat-card>
+  <mat-card-header [routerLink]="['/calendar','detail', item.id]">
 
-      <div class="btn-group" appDropdown>
-        <a
-          class=" btn dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-          <span class="glyphicon glyphicon-option-vertical"></span>
-        </a>
-        <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-print"></span> Drucken</a></li>
-          <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-trash"></span> Löschen</a></li>
-          <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-duplicate"></span> Dupplizieren</a>
-          </li>
-          <li role="separator" class="divider"></li>
-          <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-download-alt"></span> iCal
-            herunterladen</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <mat-card-title>Card of : Calendar</mat-card-title>
+    <mat-card-subtitle>Subtitle of calendar </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
 
-    <div class="col-xs-3">
-      <span class="glyphicon glyphicon glyphicon-info-sign"></span> 12.02.2018 -24.04.2018
-    </div>
+    {{item.calendarid}}
+    {{item.personid}}
+    {{item.created|date:'longDate'}}
+    {{item.mutated|date:'longDate'}}
+    {{item.calfrom|date:'longDate'}}
+    {{item.calto|date:'longDate'}}
+    {{item.caltype}}
+    {{item.description}}
+    {{item.allDay}}
 
-    <div class="col-xs-3">
-      Some information about it .
 
-    </div>
-  </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [routerLink]="['/calendar','detail', item.id]">
+      <mat-icon>toc</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/calendar','edit', item.id]">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
 
-</div>
+</mat-card>
+

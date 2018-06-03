@@ -1,29 +1,55 @@
-<div class="row">
-  <div class="col-lg-3">
-    <app-calendar-nav></app-calendar-nav>
+<mat-toolbar class="mat-caption">
+
+  <span class="example-spacer"></span>
+
+  <mat-form-field>
+    <input matInput (keyup)="refresh()" type="text" [(ngModel)]="searchInput" class="mat-body-1">
+    <span matPrefix class="mat-body-1"> <mat-icon>search</mat-icon></span>
+
+    <button mat-button *ngIf="searchInput" matSuffix mat-icon-button aria-label="Clear"
+            (click)="searchInput=''; refresh()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</mat-toolbar>
+<br>
+
+<div fxLayout fxLayout.xs="column">
+  <div fxFlex.lt-md="10%" fxFlex.md-xs="33%">
   </div>
+  <div fxFlex="66%" fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
 
-  <div class="col-lg-9">
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPaginateChange($event)">
+    </mat-paginator>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <form class="navbar-form navbar-right  ">
-          <div class="form-group ">
-            <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2"> <span
-                  class="glyphicon glyphicon-search"></span></span>
-              <input type="text" class="form-control " aria-describedby="sizing-addon2" placeholder="Search">
-            </div>
-          </div>
-        </form>
-      </div>
+    <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch"
+         *ngIf="activities  else loading">
+
+      <app-calendar-item *ngFor="let item of calendars.content; let i = index" [item]="item"
+                         (onRefresh)="refresh()"></app-calendar-item>
+
+
     </div>
+    <ng-template #loading>
+      <div class="app-loading">
+        <div class="logo"></div>
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        </svg>
+      </div>
 
-
-
-    <h3>this week </h3>
-    <app-calendar-item *ngFor="let item of calendarList" ></app-calendar-item>
+    </ng-template>
 
 
   </div>
+  <div fxFlex> <!--Right Menubar --> </div>
+
 </div>
+<span class="done">
+  <button mat-fab [routerLink]="['/calendar','new']">
+    <mat-icon>add circle</mat-icon>
+  </button>
+</span>

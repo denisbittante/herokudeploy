@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {CalendarEntryModel} from "../../calendar-model";
+import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {Calendar} from "../../calendar-model";
+import {CalendarService} from "../../calendar.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-calendar-item',
@@ -8,13 +10,15 @@ import {CalendarEntryModel} from "../../calendar-model";
 })
 export class CalendarItemComponent implements OnInit {
 
+  @Input() item: Calendar;
+  @Output() onRefresh: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-
-  constructor() {
+  constructor(private calendarService: CalendarService, private router: Router) {
   }
 
   ngOnInit() {
+
   }
 
 }

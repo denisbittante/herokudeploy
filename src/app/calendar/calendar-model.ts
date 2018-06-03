@@ -1,43 +1,37 @@
-/**
- * Created by Denis Bittante on 15.12.2017.
- */
-export class CalendarEntryModel {
+export class Calendar {
 
-  public title: string;
-  public calInfo: string;
-  public visibility: number[]; //Space
-  public author: number;
-  public person: number; //Person
-  public calEntryFrom: Date;
-  public calEntryTo: Date;
-  public allDay: boolean = false;
-  public calType: number = 0; // 0 = absent , 1 = present
-  public createDate: Date;
-  public mutationDate: Date;
+  public calendarid: number;
+  public personid: number;
+  public created: number;
+  public mutated: number;
+  public calfrom: number;
+  public calto: number;
+  public caltype: number;
+  public description: string;
+  public allDay: boolean;
 
-  constructor(title: string,
-              calInfo: string,
-              visibility: number[],
-              author: number,
-              person: number,
-              calEntryFrom: Date,
-              calEntryTo: Date,
-              allDay: boolean,
-              calType: number,
-              createDate: Date,
-              mutationDate: Date) {
 
-    this.title = title;
-    this.calInfo = calInfo;
-    this.visibility = visibility;
-    this.author = author;
-    this.person = person;
-    this.calEntryTo = calEntryTo;
-    this.calEntryFrom = calEntryFrom;
+  constructor(calendarid: number,
+              personid: number,
+              created: number,
+              mutated: number,
+              calfrom: number,
+              calto: number,
+              caltype: number,
+              description: string,
+              allDay: boolean) {
+
+    this.calendarid = calendarid;
+    this.personid = personid;
+    this.created = created;
+    this.mutated = mutated;
+    this.calfrom = calfrom;
+    this.calto = calto;
+    this.caltype = caltype;
+    this.description = description;
     this.allDay = allDay;
-    this.calType = calType;
-    this.createDate = createDate;
-    this.mutationDate = mutationDate;
+
+
   }
 
 }
