@@ -26,7 +26,7 @@
     </mat-paginator>
 
     <div fxLayout fxLayout="column" fxLayoutWrap fxLayoutGap="5px" fxLayoutAlign="space-around stretch"
-         *ngIf="activities  else loading">
+         *ngIf="calendars else loading">
 
       <app-calendar-item *ngFor="let item of calendars.content; let i = index" [item]="item"
                          (onRefresh)="refresh()"></app-calendar-item>
