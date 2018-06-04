@@ -11,13 +11,13 @@ import {AuthService} from "./auth/auth.service";
 export class AppComponent implements OnInit {
 
   spaces: SpaceModel[];
-
+  authService: AuthService;
   onActivityCreated(infos: {name: string}) {
     console.log('Was Clicked ' + infos.name);
   }
 
-  constructor(private spacesrv: SpaceService, authService: AuthService) {
-
+  constructor(private spacesrv: SpaceService, private authService: AuthService) {
+    this.authService = authService;
   }
 
   ngOnInit() {
