@@ -13,12 +13,10 @@ export class AppComponent implements OnInit {
   spaces: SpaceModel[];
 
   onActivityCreated(infos: {name: string}) {
-
     console.log('Was Clicked ' + infos.name);
-
   }
 
-  constructor(private spacesrv: SpaceService, private authService: AuthService) {
+  constructor(private spacesrv: SpaceService, authService: AuthService) {
 
   }
 
@@ -28,7 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   onLogout() {
-
     this.authService.logout();
   }
 
