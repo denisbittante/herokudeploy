@@ -45,7 +45,7 @@ export class CalendarEditComponent implements OnInit {
 
   }
 
-  public deleteActivty() {
+  public delete() {
     this.calendarsrv.delete(this.calendar.calendarid).subscribe(data => this.router.navigate(['calendars']));
   }
 
