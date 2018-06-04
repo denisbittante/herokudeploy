@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
     console.log('Was Clicked ' + infos.name);
   }
 
-  constructor(private spacesrv: SpaceService, private authService: AuthService) {
-    this.authService = authService;
+  constructor(private spacesrv: SpaceService, private authSer: AuthService) {
+    this.authService = authSer;
   }
 
   ngOnInit() {
