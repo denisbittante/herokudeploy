@@ -1,40 +1,55 @@
+<mat-toolbar color="primary">
+  <span routerLink="/activities"><mat-icon>donut_small</mat-icon></span>
+  <span class="example-spacer"></span>
 
-<div>
-  <mat-toolbar color="primary">
-    <span routerLink="/activities" ><mat-icon>donut_small</mat-icon></span>
-    <span class="example-spacer"></span>
+  <span class="mat-title" routerLink="/">JWPlan</span>
+  <span class="example-spacer"></span>
 
-    <span routerLink="/">JW Planning</span>
-    <span class="example-spacer"></span>
 
+  <ng-template [ngIf]="authService.isAuthenticated()">
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>apps</mat-icon>
     </button>
     <button mat-icon-button [mat-menu-trigger-for]="menu_account">
       <mat-icon>account_circle</mat-icon>
     </button>
-  </mat-toolbar>
-  <mat-menu x-position="before" #menu="matMenu">
-
-    <ng-template [ngIf]="!authService.isAuthenticated()">
-      <button mat-menu-item routerLink="/signup"><mat-icon>accessibility_new</mat-icon>Register</button>
-      <button mat-menu-item routerLink="/signin"><mat-icon>signin</mat-icon>Sign In</button>
-    </ng-template>
-    <ng-template [ngIf]="authService.isAuthenticated()">
-      <button mat-menu-item routerLink="/activities"><mat-icon>assignment</mat-icon>Activities</button>
-      <button mat-menu-item routerLink="/persons"><mat-icon>person_outline</mat-icon> Persons</button>
-      <button mat-menu-item routerLink="/calendar"><mat-icon>event</mat-icon>Calendar</button>
-    </ng-template>
-  </mat-menu>
-  <mat-menu x-position="before" #menu_account="matMenu">
-    <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Account</button>
-    <button mat-menu-item (click)="onLogout()"><mat-icon>exit_to_app</mat-icon>Log Out</button>
-  </mat-menu>
-
-  <router-outlet></router-outlet>
+  </ng-template>
+  <ng-template [ngIf]="!authService.isAuthenticated()">
+    <button mat-raised-button color="accent" routerLink="/signup">
+      Register
+    </button>
+    <button mat-button routerLink="/signin">
+      Log In
+    </button>
+  </ng-template>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
 
 
+  <ng-template [ngIf]="authService.isAuthenticated()">
+    <button mat-menu-item routerLink="/activities">
+      <mat-icon>assignment</mat-icon>
+      Activities
+    </button>
+    <button mat-menu-item routerLink="/persons">
+      <mat-icon>person_outline</mat-icon>
+      Persons
+    </button>
+    <button mat-menu-item routerLink="/calendar">
+      <mat-icon>event</mat-icon>
+      Calendar
+    </button>
+  </ng-template>
+</mat-menu>
+<mat-menu x-position="before" #menu_account="matMenu">
+  <button mat-menu-item>Settings</button>
+  <button mat-menu-item>Account</button>
+  <button mat-menu-item (click)="onLogout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Log Out
+  </button>
+</mat-menu>
+
+<router-outlet></router-outlet>
 
 
-</div>

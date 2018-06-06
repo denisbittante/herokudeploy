@@ -31,7 +31,7 @@ export class CalendarEditComponent implements OnInit {
       'caltype': new FormControl(null),
       'description': new FormControl(null),
       'allDay': new FormControl(null),
-
+      'space': new FormControl(null)
     });
 
   }
@@ -40,13 +40,13 @@ export class CalendarEditComponent implements OnInit {
 
   public update() {
     this.saveFormToModel();
-    this.calendarsrv.update(this.calendar).subscribe(data => this.router.navigate(['calendars']));
+    this.calendarsrv.update(this.calendar).subscribe(data => this.router.navigate(['calendar']));
     this.routeToMainpage();
 
   }
 
   public delete() {
-    this.calendarsrv.delete(this.calendar.calendarid).subscribe(data => this.router.navigate(['calendars']));
+    this.calendarsrv.delete(this.calendar.calendarid).subscribe(data => this.router.navigate(['calendar']));
   }
 
   public cancel() {
@@ -60,7 +60,7 @@ export class CalendarEditComponent implements OnInit {
   }
 
   routeToMainpage() {
-    this.router.navigate(['calendars']);
+    this.router.navigate(['calendar']);
   }
 
   ngOnInit() {
@@ -87,6 +87,7 @@ export class CalendarEditComponent implements OnInit {
     var caltype = this.frmGroup.get('caltype').value;
     var description = this.frmGroup.get('description').value;
     var allDay = this.frmGroup.get('allDay').value;
+    var space = this.frmGroup.get('space').value;
 
     this.calendar = new Calendar(
       this.id,
@@ -98,6 +99,7 @@ export class CalendarEditComponent implements OnInit {
       caltype,
       description,
       allDay,
+      space
     );
 
   }
@@ -115,7 +117,7 @@ export class CalendarEditComponent implements OnInit {
     this.frmGroup.get('caltype').setValue(data.caltype);
     this.frmGroup.get('description').setValue(data.description);
     this.frmGroup.get('allDay').setValue(data.allDay);
-
+    this.frmGroup.get('space').setValue(data.space);
 
   }
 

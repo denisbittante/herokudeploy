@@ -9,6 +9,7 @@ export class Calendar {
   public caltype: number;
   public description: string;
   public allDay: boolean;
+  public space: number;
 
 
   constructor(calendarid: number,
@@ -19,7 +20,8 @@ export class Calendar {
               calto: number,
               caltype: number,
               description: string,
-              allDay: boolean) {
+              allDay: boolean,
+              space: number) {
 
     this.calendarid = calendarid;
     this.personid = personid;
@@ -30,6 +32,7 @@ export class Calendar {
     this.caltype = caltype;
     this.description = description;
     this.allDay = allDay;
+    this.space = space;
 
 
   }

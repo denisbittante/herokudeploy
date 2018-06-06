@@ -21,19 +21,20 @@ import {NgModule} from "@angular/core";
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'activities', component: ActivityListComponent},
-  {path: 'activity/detail/:id', component: ActivityDetailComponent},
+  {path: 'activities', component: ActivityListComponent, canActivate: [AuthGuard]},
+  {path: 'activity/detail/:id', component: ActivityDetailComponent, canActivate: [AuthGuard]},
   {path: 'activity/edit/:id', component: ActivityEditComponent, canActivate: [AuthGuard]},
   {path: 'activity/new', component: ActivityEditComponent, canActivate: [AuthGuard]},
-  {path: 'persons', component: PersonListComponent},
-  {path: 'person/detail/:id', component: PersonDetailComponent},
+  {path: 'persons', component: PersonListComponent, canActivate: [AuthGuard]},
+  {path: 'person/detail/:id', component: PersonDetailComponent, canActivate: [AuthGuard]},
   {path: 'person/edit/:id', component: PersonEditComponent, canActivate: [AuthGuard]},
   {path: 'person/new', component: PersonEditComponent, canActivate: [AuthGuard]},
-  {path: 'calendar', component: CalendarListComponent},
-  {path: 'calendar/detail/:id', component: CalendarDetailComponent},
+  {path: 'calendar', component: CalendarListComponent, canActivate: [AuthGuard]},
+  {path: 'calendar/detail/:id', component: CalendarDetailComponent, canActivate: [AuthGuard]},
   {path: 'calendar/edit/:id', component: CalendarEditComponent, canActivate: [AuthGuard]},
+  {path: 'calendar/new', component: CalendarEditComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/activities', pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: '**', redirectTo: '/activities', pathMatch: 'full'}
+  {path: '**', redirectTo: '/activities', pathMatch: 'full', canActivate: [AuthGuard]}
 ];
 
 @NgModule({
